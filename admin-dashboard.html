@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Dashboard Overview</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "accent-red": "#dc2626",
+                        "accent-gold": "#eab308",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "4px",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+    <div class="flex h-screen overflow-hidden">
+      <!-- Sidebar Navigation -->
+      <aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col shrink-0">
+        <div class="p-6 flex items-center gap-3">
+          <div class="bg-primary rounded-lg size-10 flex items-center justify-center text-white">
+            <span class="material-symbols-outlined">account_balance</span>
+          </div>
+          <div class="flex flex-col">
+            <h1 class="text-slate-900 dark:text-white text-base font-bold leading-none">PF Management</h1>
+            <p class="text-slate-500 text-xs font-medium">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-semibold" href="#">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-sm">Dashboard</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">groups</span>
+            <span class="text-sm">Members</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="text-sm">Contributions</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <span class="text-sm">Loans</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">wallet</span>
+            <span class="text-sm">Withdrawals</span>
+          </a>
+          <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">Reports</div>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="text-sm">Financial Summary</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">description</span>
+            <span class="text-sm">Audit Log</span>
+          </a>
+        </nav>
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+          <div class="mt-4 flex items-center gap-3 px-3">
+            <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center" data-alt="Administrator user profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASp_0O3dTNtAamg755r-gYpLYEJQIV2W9a1PAIKT-eIjggRe7UjYEyuzbDcD5HubjeTpxxMOa4XuZtEPPSDNelE2dAXi63-BWVU11vviKerwh0vXiZZtCv7PmJG3QX6bb4KPwr2hZBikqxSjUlnV-7x6vg2atf1zV2aDZU7ITNi-dpj0ubnVdAEaRdxMaCY43TUCMY_t4WGO3kABP1y09Y3Na3pfZqohnlCTtMFbt0bvhU4oh_EencKXIhYvpVlwyqD8IVhl8hDcY')"></div>
+            <div class="flex-1 overflow-hidden">
+              <p class="text-xs font-bold text-slate-900 dark:text-white truncate">Alex Johnson</p>
+              <p class="text-[10px] text-slate-500 truncate">Head of Finance</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 overflow-y-auto">
+        <!-- Header -->
+        <header class="sticky top-0 z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Admin Dashboard</h2>
+            <p class="text-sm text-slate-500">Welcome back, alex. Here's what's happening today.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="relative max-w-xs">
+              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+              <input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search members, transactions..." type="text"/>
+            </div>
+            <button class="size-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button class="bg-accent-gold text-slate-900 px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-accent-gold/90 transition-colors shadow-lg shadow-accent-gold/20">
+              <span class="material-symbols-outlined text-base">add</span>
+              New Entry
+            </button>
+          </div>
+        </header>
+
+        <div class="p-8 space-y-8">
+          <!-- KPI Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Total Members</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">12,450</h3>
+                <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">+2.4% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Total Contributions</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">$45.2M</h3>
+                <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">-1.2% <span class="material-symbols-outlined text-sm">trending_down</span></span>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Loans Issued</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">$12.8M</h3>
+                <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">+5.6% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Repayments</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">$8.4M</h3>
+                <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">+3.1% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Withdrawals</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">$5.1M</h3>
+                <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">-0.5% <span class="material-symbols-outlined text-sm">trending_down</span></span>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm ring-2 ring-primary ring-opacity-10">
+              <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Fund Balance</p>
+              <div class="flex items-end justify-between">
+                <h3 class="text-2xl font-bold text-primary">$30.1M</h3>
+                <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">+4.2% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart and Middle Section -->
+          <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+            <!-- Contribution Trends Chart -->
+            <div class="xl:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-8">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white">Contribution Trends</h3>
+                  <p class="text-sm text-slate-500">Overview of the last 6 months performance</p>
+                </div>
+                <select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold focus:ring-primary focus:border-primary">
+                  <option>Last 6 Months</option>
+                  <option>Last Year</option>
+                </select>
+              </div>
+              <div class="h-[300px] w-full relative">
+                <!-- SVG Placeholder for Chart -->
+                <div class="absolute inset-0 flex flex-col justify-between pt-2">
+                  <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                  <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                  <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                  <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                  <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                </div>
+                <svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 1000 300">
+                  <path d="M0 250 Q 100 220, 200 240 T 400 180 T 600 150 T 800 120 T 1000 80" fill="none" stroke="#1773cf" stroke-linecap="round" stroke-width="4"></path>
+                  <path d="M0 250 Q 100 220, 200 240 T 400 180 T 600 150 T 800 120 T 1000 80 L 1000 300 L 0 300 Z" fill="url(#chartGradient)" opacity="0.1"></path>
+                  <defs>
+                    <lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#1773cf"></stop>
+                      <stop offset="100%" stop-color="#1773cf" stop-opacity="0"></stop>
+                    </lineargradient>
+                  </defs>
+                </svg>
+                <div class="absolute bottom-[-24px] w-full flex justify-between px-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                  <span>Jan</span>
+                  <span>Feb</span>
+                  <span>Mar</span>
+                  <span>Apr</span>
+                  <span>May</span>
+                  <span>Jun</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Card - Quick Stats/Distribution -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Asset Distribution</h3>
+              <div class="space-y-6">
+                <div class="flex items-center justify-center py-4">
+                  <div class="relative size-32">
+                    <svg class="size-full" viewbox="0 0 36 36">
+                      <path class="text-slate-100 dark:text-slate-800" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+                      <path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-width="3"></path>
+                      <path class="text-accent-gold" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="25, 100" stroke-dashoffset="-65" stroke-width="3"></path>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                      <span class="text-2xl font-bold text-slate-900 dark:text-white">65%</span>
+                      <span class="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Invested</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="size-2 rounded-full bg-primary"></div>
+                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Fixed Deposits</span>
+                  </div>
+                  <span class="text-xs font-bold text-slate-900 dark:text-white">$18.5M</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="size-2 rounded-full bg-accent-gold"></div>
+                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Government Bonds</span>
+                  </div>
+                  <span class="text-xs font-bold text-slate-900 dark:text-white">$7.2M</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="size-2 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Liquid Cash</span>
+                  </div>
+                  <span class="text-xs font-bold text-slate-900 dark:text-white">$4.4M</span>
+                </div>
+              </div>
+              <button class="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                                View Full Portfolio
+                            </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Transactions</h3>
+              <p class="text-sm text-slate-500">The most recent activity across the fund system.</p>
+            </div>
+            <button class="text-primary text-sm font-bold hover:underline">View All Transactions</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="bg-slate-50/50 dark:bg-slate-800/50">
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Member</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Transaction ID</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Type</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Amount</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Date</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">Status</th>
+                  <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">JD</div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Jane Doe</p>
+                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-2938</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-mono text-slate-500">TXN-48291039</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-primary text-sm">payments</span>
+                                            Contribution
+                                        </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$1,200.00</td>
+                  <td class="px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">Completed</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                      <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center" data-alt="User avatar for Michael Smith" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALEDa7sRgjbjJ8msAecvciiaMtk9xJoVVtch2wz26W5YM0k9uEOS18PcxEJwzvZo1pUSQiXQO1hXaGOnwXWDdmaGykLvjnYJSZlmLxVcbb_jfr-M84_DgNmyS77_g7WQZrFbRSZX2VANAdLekHO9dCEpq6X7GxUw0ZI-Yxof7NC_RF4WJa4zhgaZQkXdWWl5Xo8vTT4qSem1Hp-GpEI0nWvOs4VwYY1eYA3JF-ytFv45Fb1lcfIEDH5HpgxA4IcFCrjIbB-qa6_00')"></div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Michael Smith</p>
+                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-8472</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-mono text-slate-500">TXN-48291040</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-accent-gold text-sm">receipt_long</span>
+                                            Loan Disbursed
+                                        </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$15,000.00</td>
+                  <td class="px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">Completed</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                      <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">RS</div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Robert Shaw</p>
+                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-5521</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-mono text-slate-500">TXN-48291041</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-accent-red text-sm">wallet</span>
+                                            Withdrawal
+                                        </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$3,500.00</td>
+                  <td class="px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[10px] font-bold uppercase">Pending</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                      <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center" data-alt="User avatar for Sarah Wilson" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRqibhZLf2o7BvdF0aLDOKoqQqDleSF-EjWNUF6MDNhNEuE1cGu_Q60NTCowYVYixu0xVpnoj3lACCbr5JyCqr6PQsMGBul4uZpMuIcduANZEv4buXfoA_Va_PwMUKBjAbyWVYneYvs-hudTK12jZq9unJ-My5fz-Iecr0ycRxHy700X4I27hyU5Z6IcnqcyY2vq_esobWFXuZCYplTF0W_n9Gnn0RqdfLfymJKrT4XLirB7sVj3Xy7xtOue8TviJI0FiA_E3MCfk')"></div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Sarah Wilson</p>
+                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-1102</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-mono text-slate-500">TXN-48291042</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-primary text-sm">history</span>
+                                            Loan Repayment
+                                        </div>
+                  </td>
+                  <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$850.00</td>
+                  <td class="px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">Completed</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                      <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
+

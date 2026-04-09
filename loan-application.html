@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>New Loan Application - Provident Fund Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "accent-red": "#d93025",
+                        "accent-gold": "#f9ab00",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Top Navigation -->
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">account_balance</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Provident Fund</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <div class="flex items-center gap-9">
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+                        <a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary" href="#">Loans</a>
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Contributions</a>
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Profile</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700">
+                            <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        </button>
+                        <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700">
+                            <span class="material-symbols-outlined text-[20px]">settings</span>
+                        </button>
+                    </div>
+                    <div class="bg-accent-gold/20 bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-800" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC896UuatK0QF2gnCEh1d_bzC0muCkLNhpa9ewtrGplb4kDGIQfk6DT4RGTDMqo_gzcF6QgMtEbyvffYU8eUWppAQEtzADA3xKIBODwt15fdp9x_gXyGIXdvWG7ouacs09KoRirAuKiAbAck4ic0Rf4dEQIRzpgZmbLx6uWoq46cJzyeXbRYoVHMIp_l8JxDMkfhtClZ-W2hcCgUzt4pwQ9hm87aL1AJOsBESlMaTWeRJft5A770tfh8kVE98BfuZM1yMaTTtpb04k");'></div>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-10">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 md:px-10">
+                    <!-- Page Header -->
+                    <div class="flex flex-col gap-2 mb-8">
+                        <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em]">New Loan Application</h1>
+                        <p class="text-slate-500 dark:text-slate-400 text-base font-normal">Complete the steps below to submit your loan request. Approval typically takes 3-5 business days.</p>
+                    </div>
+                    <!-- Progress Bar Container -->
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 mb-8 shadow-sm">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="flex flex-col gap-1">
+                                <p class="text-accent-red text-sm font-bold uppercase tracking-wider">Step 1 of 4</p>
+                                <h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Loan Details</h3>
+                            </div>
+                            <p class="text-slate-900 dark:text-slate-100 text-sm font-bold">25% Complete</p>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full transition-all duration-500" style="width: 25%;"></div>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <div class="flex items-center gap-2 text-primary">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                <span class="text-xs font-semibold">Details</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400">
+                                <span class="material-symbols-outlined text-sm">radio_button_unchecked</span>
+                                <span class="text-xs font-semibold">Calculation</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400">
+                                <span class="material-symbols-outlined text-sm">radio_button_unchecked</span>
+                                <span class="text-xs font-semibold">Documents</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400">
+                                <span class="material-symbols-outlined text-sm">radio_button_unchecked</span>
+                                <span class="text-xs font-semibold">Terms</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form Section -->
+                    <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                        <div class="p-8 border-b border-slate-200 dark:border-slate-800">
+                            <h2 class="text-slate-900 dark:text-slate-100 text-[22px] font-bold leading-tight tracking-[-0.015em] mb-6">Enter Loan Information</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Loan Amount -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-normal">Requested Loan Amount</label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                                        <input class="form-input flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 pl-8 pr-4 text-base font-medium" placeholder="0.00" type="text"/>
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 italic">Maximum eligible: <span class="font-bold text-slate-700 dark:text-slate-300">$25,000.00</span></p>
+                                </div>
+                                <!-- Loan Type -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-normal">Loan Type</label>
+                                    <select class="form-select flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base font-medium">
+                                        <option value="personal">Personal Loan</option>
+                                        <option value="facility">Facility Loan</option>
+                                        <option value="emergency">Emergency Loan</option>
+                                    </select>
+                                </div>
+                                <!-- Term Length -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-normal">Repayment Period (Months)</label>
+                                    <input class="form-input flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base font-medium" max="48" min="6" placeholder="e.g. 12" type="number"/>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Min: 6 months / Max: 48 months</p>
+                                </div>
+                                <!-- Reason -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-normal">Purpose of Loan</label>
+                                    <input class="form-input flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base font-medium" placeholder="Brief description" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side Info / Preview -->
+                        <div class="bg-primary/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-200 dark:border-slate-800">
+                            <div class="flex items-center gap-4">
+                                <div class="size-12 rounded-full bg-primary flex items-center justify-center text-white">
+                                    <span class="material-symbols-outlined">calculate</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-slate-900 dark:text-slate-100 font-bold">Preview Calculation</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm">Estimated figures based on current interest rates.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-8">
+                                <div class="text-right">
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Interest Rate</p>
+                                    <p class="text-xl font-black text-accent-red">4.5% APR</p>
+                                </div>
+                                <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-8">
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Monthly Pay</p>
+                                    <p class="text-xl font-black text-slate-900 dark:text-slate-100">$0.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="p-8 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+                            <button class="flex items-center justify-center px-6 h-12 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                                Cancel
+                            </button>
+                            <div class="flex gap-4">
+                                <button class="flex items-center justify-center px-8 h-12 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                                    Save &amp; Next
+                                    <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guidance Footer -->
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-t-4 border-t-accent-gold border-slate-200 dark:border-slate-800 shadow-sm">
+                            <span class="material-symbols-outlined text-primary">info</span>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Need help?</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Contact fund support for policy clarifications.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-t-4 border-t-accent-red border-slate-200 dark:border-slate-800 shadow-sm">
+                            <span class="material-symbols-outlined text-primary">security</span>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Secure Process</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Your financial data is encrypted and protected.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg border-t-4 border-t-primary border-slate-200 dark:border-slate-800 shadow-sm">
+                            <span class="material-symbols-outlined text-primary">history</span>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Auto-Save</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Application progress is saved automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="border-t border-slate-200 dark:border-slate-800 py-6 px-10 bg-white dark:bg-slate-900">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                    <p>© 2024 Provident Fund Management System. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                        <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                        <a class="hover:text-primary transition-colors" href="#">Support</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
