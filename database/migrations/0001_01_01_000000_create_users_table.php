@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('account_type')->default('free');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('date_of_birth')->nullable();
+            $table->string('company')->nullable();
+            $table->string('job_title')->nullable();
             // $table->enum('role', [
             //     'staff',
             //     'director',
@@ -30,7 +33,7 @@ return new class extends Migration
             //     'super_admin',
             //     'admin'
             // ])->default('staff');
-            $table->string('api_key')->unique();
+            // $table->string('api_key')->unique();
             $table->boolean('is_active')->default(false);
             // make user inactive if not active for 6 month
             $table->date('last_active_at')->nullable();

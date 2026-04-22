@@ -27,7 +27,7 @@
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total
                     Contributions</p>
                 <div class="flex items-end justify-between">
-<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">$ {{ number_format($stats['total_contributions'] / 1000000, 1) }}M</h3>
+<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS {{ number_format($stats['total_contributions'] / 1000000, 1) }}M</h3>
                     <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">
                         -1.2%
                         <span class="material-symbols-outlined text-sm">trending_down</span>
@@ -40,7 +40,7 @@
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Loans Issued
                 </p>
                 <div class="flex items-end justify-between">
-<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">$ {{ number_format($stats['loans_issued'] / 1000000, 1) }}M</h3>
+<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS {{ number_format($stats['loans_issued'] / 1000000, 1) }}M</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
                         +5.6%
                         <span class="material-symbols-outlined text-sm">trending_up</span>
@@ -52,7 +52,7 @@
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Repayments</p>
                 <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">$8.4M</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS 0</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
                         +3.1%
                         <span class="material-symbols-outlined text-sm">trending_up</span>
@@ -64,7 +64,7 @@
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Withdrawals</p>
                 <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">$5.1M</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS 0</h3>
                     <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">
                         -0.5%
                         <span class="material-symbols-outlined text-sm">trending_down</span>
@@ -77,7 +77,7 @@
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Fund Balance
                 </p>
                 <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-primary">$30.1M</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-primary">GHS 0</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
                         +4.2%
                         <span class="material-symbols-outlined text-sm">trending_up</span>
@@ -179,7 +179,7 @@
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Fixed
                                     Deposits</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">$18.5M</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -187,14 +187,14 @@
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Government
                                     Bonds</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">$7.2M</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <div class="size-2 rounded-full bg-slate-200 dark:bg-slate-700"></div>
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Liquid Cash</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">$4.4M</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
                         </div>
                     </div>
 
@@ -268,7 +268,7 @@
                                     Contribution
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$1,200.00</td>
+                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
                             <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
                             <td class="px-4 sm:px-6 py-4">
                                 <span
@@ -305,7 +305,7 @@
                                     Loan Disbursed
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$15,000.00</td>
+                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
                             <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
                             <td class="px-4 sm:px-6 py-4">
                                 <span
@@ -342,7 +342,7 @@
                                     Withdrawal
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$3,500.00</td>
+                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
                             <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
                             <td class="px-4 sm:px-6 py-4">
                                 <span
@@ -379,7 +379,7 @@
                                     Loan Repayment
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">$850.00</td>
+                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
                             <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
                             <td class="px-4 sm:px-6 py-4">
                                 <span

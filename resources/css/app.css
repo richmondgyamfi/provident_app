@@ -9,3 +9,43 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Print styles for loan application */
+@media print {
+  body * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  #sidebar, #sidebar-overlay, [id*="header"], .guidance-cards, button:not(.print-btn), .progress-bar-container,
+  #guidance-cards {
+    display: none !important;
+  }
+  
+  main, .print-section {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    page-break-inside: avoid;
+  }
+  
+  .print-section {
+    margin-bottom: 20px;
+  }
+  
+  table {
+    font-size: 10pt;
+    width: 100%;
+    page-break-inside: auto;
+  }
+  
+  .print-header {
+    page-break-after: avoid;
+  }
+  
+  @page {
+    size: A4 portrait;
+    margin: 0.5in;
+  }
+}

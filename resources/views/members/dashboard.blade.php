@@ -25,7 +25,7 @@
             <span class="material-symbols-outlined text-primary">analytics</span>
             My Fund Summary
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
             <div
                 class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-primary">
                 <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Personal
@@ -37,7 +37,7 @@
                     <span class="text-slate-400 font-normal ml-1">vs last yr</span>
                 </div>
             </div>
-            <div
+            {{-- <div
                 class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-accent-gold">
                 <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Interest Earned
                 </p>
@@ -47,10 +47,10 @@
                     <span>+3.1%</span>
                     <span class="text-slate-400 font-normal ml-1">YTD</span>
                 </div>
-            </div>
+            </div> --}}
             <div
                 class="flex flex-col gap-2 rounded-xl p-6 bg-primary text-white border border-primary shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
-                <p class="text-white/80 text-sm font-medium uppercase tracking-wider">Current Balance</p>
+                <p class="text-white/80 text-sm font-medium uppercase tracking-wider">All Contribution</p>
                 {{ number_format($stats['current_balance'], 2) }}
                 <div class="flex items-center gap-1 text-accent-gold text-sm font-bold">
                     <span class="material-symbols-outlined text-sm">verified</span>
@@ -77,7 +77,7 @@
                     Quick Actions
                 </h2>
                 <div class="flex flex-col gap-3">
-                    <button
+                    <a href={{ route('loan-application') }}
                         class="flex items-center justify-between w-full p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary group transition-all">
                         <div class="flex items-center gap-4">
                             <div
@@ -90,8 +90,8 @@
                             </div>
                         </div>
                         <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">chevron_right</span>
-                    </button>
-                    <button
+                    </a>
+                    <a href="{{ route('withdrawal-request') }}"
                         class="flex items-center justify-between w-full p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent-red group transition-all">
                         <div class="flex items-center gap-4">
                             <div
@@ -105,8 +105,8 @@
                         </div>
                         <span
                             class="material-symbols-outlined text-slate-400 group-hover:text-accent-red">chevron_right</span>
-                    </button>
-                    <button
+                    </a>
+                    <a href="{{ route('staff-statement') }}"
                         class="flex items-center justify-between w-full p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent-gold group transition-all">
                         <div class="flex items-center gap-4">
                             <div
@@ -120,7 +120,7 @@
                         </div>
                         <span
                             class="material-symbols-outlined text-slate-400 group-hover:text-accent-gold">chevron_right</span>
-                    </button>
+                    </a>
                     <div
                         class="mt-4 p-4 rounded-xl bg-slate-900 dark:bg-primary/20 text-white relative overflow-hidden border-t-2 border-accent-gold">
                         <div class="relative z-10">
@@ -176,7 +176,7 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-right">
-                                        $850.00</td>
+                                        GHS 0</td>
                                     <td class="px-6 py-4">
                                         <span
                                             class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Completed</span>
@@ -188,7 +188,7 @@
                                     <td class="px-6 py-4 text-sm text-slate-900 dark:text-slate-100 font-semibold">Monthly
                                         Contribution</td>
                                     <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-right">
-                                        $850.00</td>
+                                        GHS 0</td>
                                     <td class="px-6 py-4">
                                         <span
                                             class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Completed</span>
@@ -201,7 +201,7 @@
                                         Top-up</td>
                                     <td
                                         class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-right text-accent-red">
-                                        $2,000.00</td>
+                                        GHS 0</td>
                                     <td class="px-6 py-4">
                                         <span
                                             class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Completed</span>
@@ -213,7 +213,7 @@
                                     <td class="px-6 py-4 text-sm text-slate-900 dark:text-slate-100 font-semibold">Monthly
                                         Contribution</td>
                                     <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-right">
-                                        $850.00</td>
+                                        GHS 0</td>
                                     <td class="px-6 py-4">
                                         <span
                                             class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Completed</span>
@@ -225,7 +225,7 @@
                                     <td class="px-6 py-4 text-sm text-slate-900 dark:text-slate-100 font-semibold">Monthly
                                         Contribution</td>
                                     <td class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-right">
-                                        $850.00</td>
+                                        GHS 0</td>
                                     <td class="px-6 py-4">
                                         <span
                                             class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Completed</span>

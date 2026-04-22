@@ -25,13 +25,31 @@ class User extends Authenticatable
         'email',
         'phone_no',
         'staff_no',
+        'date_of_birth',
+        'company',
+        'job_title',
         'account_type',
         'password',
-        'api_key',
+        // 'api_key',
         'role',
         'is_active',
         'last_active_at',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_users');
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('slug', $role)->exists();
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin') || $this->hasRole('super_admin');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -70,6 +70,10 @@
     <style>
         body {
             font-family: 'Public Sans', sans-serif;
+            background-image: url('{{ asset('uccbackground.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .toggle-thumb {
@@ -89,16 +93,22 @@
             <!-- Header -->
             <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-20 bg-white dark:bg-slate-900">
                 <div class="flex items-center gap-3">
-                    <div class="size-10 flex items-center justify-center bg-primary rounded-lg">
+                    {{-- <div class="size-10 flex items-center justify-center bg-primary rounded-lg">
                         <img
                             alt="Institutional Logo"
                             class="size-8 object-contain"
-                            src="{{ asset('ucc_logo.png') }}"
+                            src="{{ asset('ucclogo_horizontal_blue.png') }}"
                         />
-                    </div>
-                    <h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">
+                    </div> --}}
+                    <img
+                        alt="Institutional Logo"
+                        {{-- class="size-20 object-contain" --}}
+                        style="width:180px; height: auto;"
+                        src="{{ asset('ucclogo_horizontal_blue.png') }}"
+                    />
+                    {{-- <h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">
                         Provident Fund Association
-                    </h2>
+                    </h2> --}}
                 </div>
 
                 
@@ -128,14 +138,20 @@
             <main class="flex-1 flex items-center justify-center p-6 lg:p-12">
                 <div class="w-full max-w-[1100px] grid lg:grid-cols-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl overflow-hidden">
 
+                {{-- <div class="w-full max-w-[1100px] grid lg:grid-cols-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-white/50 dark:border-slate-800/50"> --}}
+
                     <!-- Left Panel -->
                     <div class="hidden lg:block relative overflow-hidden bg-primary/10">
+                    {{-- <div class="hidden lg:block relative overflow-hidden bg-black/50"> --}}
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
+
+                        {{-- <div class="absolute inset-0 bg-gradient-to-br from-black/30 to-black/70"></div> --}}
 
                         <div class="relative h-full flex flex-col justify-center p-12 space-y-8">
                             <div>
                                 <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                                    Secure Financial Management
+                                    Provident Fund Association
+                                    {{-- Secure Financial Management --}}
                                 </h1>
                                 <p class="text-lg text-slate-600 dark:text-slate-300">
                                     Access your provident fund account with enterprise-grade security and a seamless interface designed for your peace of mind.

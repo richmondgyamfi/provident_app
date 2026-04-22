@@ -173,7 +173,7 @@
                                 </div>
 
                                 <!-- Employee Share -->
-                                <div class="flex flex-col gap-1.5">
+                                {{-- <div class="flex flex-col gap-1.5">
                                     <label
                                         class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Employee
                                         Month
@@ -187,19 +187,17 @@
                                             class="w-full pl-8 pr-4 h-11 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
                                             required />
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Employer Share -->
                                 <div class="flex flex-col gap-1.5">
                                     <label
-                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Employer
-                                        Yearly
-                                        Contribution (GHS)</label>
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Contribution Amount (GHS)</label>
                                     <div class="relative">
                                         <span
                                             class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">₵</span>
-                                        <input type="number" step="0.01" name="employer_amount"
-                                            value="{{ isset($contribution) ? $contribution->employer_amount : old('employer_amount', 0) }}"
+                                        <input type="number" step="0.01" name="contribution_amount"
+                                            value="{{ isset($contribution) ? $contribution->contribution_amount : old('contribution_amount', 0) }}"
                                             placeholder="0.00"
                                             class="w-full pl-8 pr-4 h-11 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
                                             required />
@@ -442,7 +440,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- Left: Upload Section -->
             <div class="lg:col-span-2 flex flex-col gap-6">
-<form action="{{ route('payroll-uploads.store') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+                <form action="{{ route('payroll-uploads.store') }}" method="POST" enctype="multipart/form-data" id="upload-form">
                     @csrf
                     <input type="file" name="payroll_file" id="file-input" accept=".csv,.xlsx,.xls" class="hidden" required>
                     <div
@@ -474,6 +472,11 @@
                         </div>
                         <p class="text-sm text-slate-500 mt-1">Uploading...</p>
                     </div>
+                    <button type="submit"
+                        class="flex min-w-[140px] items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold tracking-tight hover:bg-primary/90 transition-all"
+                        id="browse-btn">
+                        Submit
+                    </button>
                 </form>
                 <!-- Recent Uploads Table -->
                 <div
@@ -520,13 +523,13 @@
                                         </td>
                                         <td class="px-6 py-4 text-sm text-slate-500 font-medium">{{ $upload->records_count ?? 0 }}</td>
                                         <td class="px-6 py-4 text-right flex gap-1">
-                                            <a href="#" class="text-slate-400 hover:text-primary p-1" title="View">
+<a href="{{ route('payroll-uploads.show', $upload) }}" class="text-slate-400 hover:text-primary p-1" title="View">
                                                 <span class="material-symbols-outlined text-sm">visibility</span>
                                             </a>
                                             @if($upload->notes)
-                                            <button class="text-slate-400 hover:text-accent-gold p-1" title="Details">
+<a href="{{ route('payroll-uploads.show', $upload) }}" class="text-slate-400 hover:text-accent-gold p-1" title="Details">
                                                 <span class="material-symbols-outlined text-sm">info</span>
-                                            </button>
+                                            </a>
                                             @endif
                                         </td>
                                     </tr>
@@ -552,19 +555,19 @@
                         <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg flex flex-col gap-1">
                             <p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
                                 Total Contribution This Period</p>
-                            <p class="text-2xl font-black text-slate-900 dark:text-slate-100">$245,890.00</p>
+                            <p class="text-2xl font-black text-slate-900 dark:text-slate-100">GHS 0</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div
                                 class="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg flex flex-col gap-1 border border-green-100 dark:border-green-900/30">
                                 <p class="text-[10px] text-green-700 dark:text-green-400 font-bold uppercase">Employer
                                     Share</p>
-                                <p class="text-lg font-bold text-green-800 dark:text-green-300">$122,945</p>
+                                <p class="text-lg font-bold text-green-800 dark:text-green-300">GHS 0</p>
                             </div>
                             <div
                                 class="p-4 bg-primary/5 dark:bg-primary/10 rounded-lg flex flex-col gap-1 border border-primary/10">
                                 <p class="text-[10px] text-primary font-bold uppercase">Employee Share</p>
-                                <p class="text-lg font-bold text-primary">$122,945</p>
+                                <p class="text-lg font-bold text-primary">GHS 0</p>
                             </div>
                         </div>
                         <div class="mt-2 space-y-3">
@@ -608,7 +611,8 @@
                         <p class="text-slate-500 dark:text-slate-400 text-xs">Download our standardized CSV/Excel template
                             to ensure correct formatting.</p>
                         <a class="text-primary text-xs font-bold mt-2 flex items-center gap-1 hover:underline"
-                            href="#">
+                            href="{{ route('payroll.template.download') }}">
+                            <span class="material-symbols-outlined text-xs">download</span>
                             Download Template.xlsx
                         </a>
                     </div>

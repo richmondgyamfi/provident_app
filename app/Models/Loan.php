@@ -12,7 +12,7 @@ class Loan extends Model
 
     protected $fillable = [
         'member_id',
-        'loan_type_id',
+        'loan_type',
         'amount',
         'interest_rate',
         'term_months',
@@ -44,10 +44,11 @@ class Loan extends Model
             if (Auth::check()) {
                 $model->member_id = Auth::id(); // or map from user staff_no
             }
-            if (!$model->application_ref) {
-                $model->application_ref = 'LN-' . date('Y') . '-' . str_pad($model->id ?? rand(1,99999), 5, '0', STR_PAD_LEFT);
+            if (! $model->application_ref) {
+                $model->application_ref = 'LN-'.date('Y').'-'.str_pad($model->id ?? rand(1, 99999), 5, '0', STR_PAD_LEFT);
             }
             $model->status = 'pending';
+            $model->outstanding_balance = $model->amount; // init
         });
     }
 
@@ -68,12 +69,31 @@ class Loan extends Model
 
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'approved' => 'green',
             'pending' => 'yellow',
             'rejected' => 'red',
             'disbursed' => 'blue',
             default => 'gray',
         };
+    }
+
+    public function applyRepayment($amount)
+    {
+        $this->increment('total_repayable', $amount);
+        $newBalance = max(0, $this->outstanding_balance - $amount);
+        $this->update(['outstanding_balance' => $newBalance]);
+        if ($newBalance === 0) {
+            $this->update(['status' => 'repaid']);
+        }
+
+        return $this->fresh();
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', '!=', 'repaid')
+            ->where('status', '!=', 'rejected')
+            ->where('outstanding_balance', '>', 0);
     }
 }

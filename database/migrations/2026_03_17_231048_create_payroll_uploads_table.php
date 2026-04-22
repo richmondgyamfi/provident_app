@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('payroll_uploads', function (Blueprint $table) {
             $table->id();
-            $table->decimal('rate',5,2);
-            $table->year('year');
-            $table->boolean('active')->default(true);
+            $table->string('filename');
+            $table->string('file_path');
+            $table->integer('records_count')->default(0);
+            $table->enum('status', ['pending', 'success', 'processed', 'failed'])->default('pending');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

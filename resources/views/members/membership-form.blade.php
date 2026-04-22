@@ -173,11 +173,18 @@
                         <h2 class="text-xl font-black tracking-tight uppercase text-on-surface">Contribution</h2>
                     </div>
                     <div class="flex-1 p-4 bg-white border-2 border-primary ring-2 ring-primary/20 text-left">
-                        <p class="text-lg font-black mt-1">Monthly Contribution</p>
+                        {{-- <p class="text-lg font-black mt-1">Monthly Contribution</p>
                         <div class="mt-4 flex items-center gap-2">
                             <span class="font-bold text-xl">GHC</span>
                             <input class="w-50 border-none bg-surface-container-low p-2 font-bold text-center"
                                 type="number" name="monthly_contribution" value="500" min="1" />
+                        </div> --}}
+                        <p class="text-lg font-black mt-1">Monthly Percentage</p>
+                        <small>Monthly percentage of ut contributions on your basic salary (at least 10%)</small>
+                        <div class="mt-4 flex items-center gap-2">
+                            <input class="w-16 border-none bg-surface-container-low p-2 font-bold text-center"
+                                type="number" value="10" min="10" name="monthly_contribution" />
+                            <span class="font-bold text-xl">%</span>
                         </div>
                     </div>
                 </section>
@@ -229,7 +236,7 @@
                 </div>
                 <div class="bg-white/5 p-4 rounded-lg">
                     <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-2">Estimated Yield</p>
-                    <div class="text-3xl font-black tracking-tighter">$4,250.00</div>
+                    <div class="text-3xl font-black tracking-tighter">GHS 0</div>
                     <p class="text-[10px] opacity-60 mt-1">Projected annual compounding based on 5% base
                         contribution + 5% matching.</p>
                 </div>
@@ -252,11 +259,11 @@
                     </a>
                 </div>
             </div>
-            <div class="rounded-xl overflow-hidden shadow-sm">
+            {{-- <div class="rounded-xl overflow-hidden shadow-sm">
                 <img alt="Institutional Building" class="w-full h-48 object-cover"
                     data-alt="Monochromatic low angle shot of a modern glass skyscraper with geometric patterns reflecting a clear blue sky"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFK1YLrKup7U7M8MBSW7k4-RCS-YaIAe2ihwP_tSHs0bu8GKeq3zcY7YBJoh7BiYDHMLcJKA8Yh4Kc8_-FDIKmYLnTj-uSJfmmZtVt2PNkPc36Addx5kQWQiOqtgmwk-F8tsvRsKXjn_kWuKfbq6iFgLdSG0EUJNQbF-Y6ZsTyKL26N-_DPobriAMKZL_Hzfe6jA2AWjYZ0lk_gsgwlQd5yVrH9eJvM1SDw2mLavkebXR5AfkeiYQk0ttzpJ_yi5TPTYnh-Jpos8Y" />
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

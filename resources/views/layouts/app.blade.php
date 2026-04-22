@@ -48,6 +48,9 @@
         })();
     </script>
 
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <!-- Global styles -->
     <style>
         body {
@@ -76,6 +79,27 @@
         html.dark .toggle-thumb {
             transform: translateX(18px);
         }
+
+        /* Print optimizations */
+        @media print {
+          html { background: white; }
+          #sidebar, #sidebar-overlay { display: none !important; }
+        
+        <!-- Custom scrollbar for WebKit browsers -->
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
     </style>
 
 </head>

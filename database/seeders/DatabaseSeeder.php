@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,15 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // Role::factory()->count(4)->create();
-        // User::factory()->create([
-        //     'fname' => 'Rich',
-        //     'lname' => 'Nketia',
-        //     'phone_no' => 'Test User',
-        //     'email' => 'rnketia25@gmail.com',
-        // ]);
-
+        // Roles
         Role::factory()->create([
             'name' => 'Admin',
             'slug' => 'admin',
@@ -49,6 +42,40 @@ class DatabaseSeeder extends Seeder
             'name' => 'Super Admin',
             'slug' => 'super_admin',
         ]);
+
+        $adminRole = Role::where('slug', 'admin')->first();
+        $superAdminRole = Role::where('slug', 'super_admin')->first();
+
+        // $adminUser = User::create([
+        //     'fname' => 'Admin',
+        //     'lname' => 'User',
+        //     'email' => 'richmond.nketia@ucc.edu.gh',
+        //     'phone_no' => '0541234567',
+        //     'staff_no' => '15876',
+        //     'date_of_birth' => '1990-01-01',
+        //     'company' => 'UCC',
+        //     'job_title' => 'Administrator',
+        //     'account_type' => 'admin',
+        //     'password' => bcrypt('password'),
+        //     // 'api_key' => Str::random(32),
+        //     'is_active' => true,
+        // ]);
+
+        // $adminUser->roles()->attach($adminRole);
+
+        // $superUser = User::create([
+        //     'fname' => 'Super',
+        //     'lname' => 'Admin',
+        //     'email' => 'superadmin@providentfund.com',
+        //     'phone_no' => '0547654321',
+        //     'staff_no' => 'SUPER001',
+        //     'account_type' => 'admin',
+        //     'password' => bcrypt('password'),
+        //     // 'api_key' => Str::random(32),
+        //     'is_active' => true,
+        // ]);
+
+        // $superUser->roles()->attach($superAdminRole);
 
         $this->call(ContributionSeeder::class);
     }
