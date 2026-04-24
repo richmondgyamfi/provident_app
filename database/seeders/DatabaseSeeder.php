@@ -63,17 +63,17 @@ class DatabaseSeeder extends Seeder
 
         // $adminUser->roles()->attach($adminRole);
 
-        // $superUser = User::create([
-        //     'fname' => 'Super',
-        //     'lname' => 'Admin',
-        //     'email' => 'superadmin@providentfund.com',
-        //     'phone_no' => '0547654321',
-        //     'staff_no' => 'SUPER001',
-        //     'account_type' => 'admin',
-        //     'password' => bcrypt('password'),
-        //     // 'api_key' => Str::random(32),
-        //     'is_active' => true,
-        // ]);
+        $superUser = User::create([
+            'fname' => 'Super',
+            'lname' => 'Admin',
+            'email' => 'rnketia25@gmail.com',
+            'phone_no' => '0547654321',
+            'staff_no' => 'SUPER001',
+            'account_type' => 'admin',
+            'password' => bcrypt('password'),
+            // 'api_key' => Str::random(32),
+            'is_active' => true,
+        ]);
 
         // $superUser->roles()->attach($superAdminRole);
 

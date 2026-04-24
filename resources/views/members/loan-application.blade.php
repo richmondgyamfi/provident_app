@@ -361,7 +361,7 @@
                 <div class="p-5 sm:p-8 bg-slate-50 dark:bg-slate-800/30 border-b border-slate-200 dark:border-slate-800">
                     <h3 class="text-slate-900 dark:text-slate-100 font-bold text-sm mb-3">Document Checklist</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        @foreach (['File size must not exceed 5MB per document.', 'All documents must be clear and legible.', 'PDFs must not be password-protected.', 'Scanned copies must be in colour.', 'Bank statements must show your name and account number.', 'Documents must be dated within the last 3 months where applicable.'] as $tip)
+                        @foreach (['File size must not exceed 5MB per document.', 'All documents must be clear and legible.', 'PDFs must not be password-protected.', 'Documents must be dated within the last 3 months where applicable.'] as $tip)
                             <div class="flex items-start gap-2">
                                 <span
                                     class="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check_circle</span>
