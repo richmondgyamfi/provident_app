@@ -89,6 +89,8 @@ class GoogleController extends Controller
             return redirect('/dashboard'); // change as needed
 
         } catch (\Exception $e) {
+            // dd($e->getMessage());
+
             return redirect('/')->with('error', 'Google login failed');
         }
     }
