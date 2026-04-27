@@ -89,16 +89,25 @@ class MemberController extends Controller
      */
     public function storeLoan(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $request->validate([
             'loan_type' => 'required',
             'amount' => 'required|numeric|min:1000|max:50000',
             'term_months' => 'required|integer|min:6|max:48',
             'purpose' => 'required|string|max:1000',
+            'chk_read' => 'required|accepted', 
+            'chk_accurate' => 'required|accepted',
+            'chk_deduction' => 'required|accepted',
+            'chk_default' => 'required|accepted',
+            'chk_signature' => 'required|accepted',
+            'fullname' => 'required|string|max:255',
+            'signed_date' => 'required|date',
             'doc_id' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
             'doc_payslip' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
             'doc_letter' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
             'doc_bank' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_purpose' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_other' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
         ]);
 
         $loanType = LoanType::findOrFail($request->loan_type_id);
@@ -106,7 +115,7 @@ class MemberController extends Controller
         $totalRepay = $monthly * $request->term_months;
 
         $loanData = [
-            'member_id' => Auth::user()->member->id,
+            'user_id' => Auth::user()->id,
             'loan_type' => $request->loan_type_id,
             'amount' => $request->amount,
             'interest_rate' => $loanType->interest_rate,
@@ -116,9 +125,24 @@ class MemberController extends Controller
             'outstanding_balance' => $totalRepay,
             'status' => 'pending',
             'purpose' => $request->purpose,
+            'chk_read' => $request->chk_read,
+            'chk_accurate' => $request->chk_accurate,
+            'chk_deduction' => $request->chk_deduction,
+            'chk_default' => $request->chk_default,
+            'chk_signature' => $request->chk_signature,
+            'fullname' => $request->fullname,
+            'signed_date' => $request->signed_date,
+            'doc_id' => $request->file('doc_id') ? $request->file('doc_id')->getClientOriginalName() : null,
+            'doc_payslip' => $request->file('doc_payslip') ? $request->file('doc_payslip')->getClientOriginalName() : null,
+            'doc_letter' => $request->file('doc_letter') ? $request->file('doc_letter')->getClientOriginalName() : null,
+            'doc_bank' => $request->file('doc_bank') ? $request->file('doc_bank')->getClientOriginalName() : null,
+            'doc_purpose' => $request->file('doc_purpose') ? $request->file('doc_purpose')->getClientOriginalName() : null,
+            'doc_other' => $request->file('doc_other') ? $request->file('doc_other')->getClientOriginalName() : null,
+            'application_ref' => 'LN-'.strtoupper(substr(md5(uniqid(rand(), true)), 0, 8)),
         ];
 
         $loan = Loan::create($loanData);
+        
 
         // Store documents
         foreach (['doc_id', 'doc_payslip', 'doc_letter', 'doc_bank', 'doc_purpose', 'doc_other'] as $doc) {
@@ -130,7 +154,11 @@ class MemberController extends Controller
 
         // Send confirmation email
         Mail::to(Auth::user()->email)->send(new LoanApplicationSubmittedMail($loan));
-
+        if (!$loan) {
+            return redirect()->route('loan-application')->with('error', 'Failed to submit loan application. Please try again.');
+        }else{
+            Log::info('Loan application created: '.$loan->application_ref.' for member ID: '.$loan->member_id);
+        }
         return redirect()->route('loan-application')->with('success', 'Loan application submitted! Ref: '.$loan->application_ref.' Confirmation email sent.');
     }
 

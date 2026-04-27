@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,6 +51,13 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->hasRole('admin') || $this->hasRole('super_admin');
+    }
+
+    public function age(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->date_of_birth ? Carbon::parse($this->date_of_birth)->age : 0,
+        );
     }
 
     /**

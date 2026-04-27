@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>@yield('title', 'PF Management') | PF Management</title>
+    {{-- icon link --}}
+    <link rel="icon" href="{{ asset('ucc_logo.png') }}" type="image/x-icon"/>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 

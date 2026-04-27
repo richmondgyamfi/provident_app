@@ -21,12 +21,26 @@ return new class extends Migration
             $table->decimal('monthly_payment', 12, 2);
             $table->decimal('total_repayable', 12, 2);
             $table->decimal('outstanding_balance', 12, 2);
+            $table->boolean('chk-read')->default(false);
+            $table->boolean('chk-accurate')->default(false);
+            $table->boolean('chk-deduction')->default(false);
+            $table->boolean('chk-default')->default(false);
+            $table->boolean('chk-signature')->default(false);
+            $table->string('fullname')->nullable();
+            $table->date('signed_date')->nullable();
+            $table->string('doc_id')->nullable();
+            $table->string('doc_payslip')->nullable();
+            $table->string('doc_letter')->nullable();
+            $table->string('doc_bank')->nullable();
+            $table->string('doc_purpose')->nullable();
+            $table->string('doc_other')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected', 'disbursed'])->default('pending');
             $table->string('purpose')->nullable();
             $table->string('application_ref')->unique();
             $table->string('approved_by')->nullable();
             $table->timestamp('disbursed_at')->nullable();
             $table->string('documents_path')->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

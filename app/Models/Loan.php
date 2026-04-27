@@ -11,7 +11,7 @@ class Loan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'member_id',
+        'user_id',
         'loan_type',
         'amount',
         'interest_rate',
@@ -21,10 +21,20 @@ class Loan extends Model
         'outstanding_balance',
         'status',
         'purpose',
+        'chk_read',
+        'chk_accurate',
+        'chk_deduction',
+        'chk_default',
+        'chk_signature',
+        'fullname',
+        'signed_date',
+        'doc_id',
+        'doc_payslip',
+        'doc_letter',
+        'doc_bank',
+        'doc_purpose',
+        'doc_other',
         'application_ref',
-        'approved_by',
-        'disbursed_at',
-        'documents_path',
     ];
 
     protected $casts = [

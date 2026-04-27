@@ -91,6 +91,7 @@
                         </div>
                         <span class="material-symbols-outlined text-slate-400 group-hover:text-primary">chevron_right</span>
                     </a>
+                    @if(auth()->user()->age >= 50)
                     <a href="{{ route('withdrawal-request') }}"
                         class="flex items-center justify-between w-full p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent-red group transition-all">
                         <div class="flex items-center gap-4">
@@ -106,6 +107,7 @@
                         <span
                             class="material-symbols-outlined text-slate-400 group-hover:text-accent-red">chevron_right</span>
                     </a>
+                    @endif
                     <a href="{{ route('staff-statement') }}"
                         class="flex items-center justify-between w-full p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-accent-gold group transition-all">
                         <div class="flex items-center gap-4">

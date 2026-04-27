@@ -7,6 +7,26 @@
         class="p-4 sm:p-8 space-y-6 sm:space-y-8">
         @csrf
 
+        @if (session('error'))
+            <div class="bg-red-100 text-red-700 p-4 rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="bg-green-100 text-green-700 p-4 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="bg-red-100 text-red-800 p-4 rounded">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif  
+
         <!-- ── Page Heading ──────────────────────────────── -->
         <div class="flex flex-col gap-2">
             <h1 class="text-slate-900 dark:text-slate-100 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">
@@ -91,7 +111,7 @@
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-900 dark:text-slate-100 text-sm font-bold">Repayment Period
                             (Months)</label>
-                        <input id="loan-term" name="{{ old('term_months') }}"
+                        <input id="loan-term" name="term_months" value="{{ old('term_months') }}"
                             class="form-input flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base font-medium"
                             max="48" min="6" placeholder="e.g. 12" type="number" oninput="recalc()" />
                         <p class="text-xs text-slate-500 dark:text-slate-400">Min: 6 months / Max: 48 months</p>
@@ -276,47 +296,47 @@
                     @php
                         $docs = [
                             [
-                                'id' => 'doc-id',
+                                'id' => 'doc_id',
                                 'label' => 'National ID / Passport',
                                 'desc' => 'A valid government-issued photo ID.',
                                 'icon' => 'badge',
                                 'required' => true,
                             ],
-                            // [
-                            //     'id' => 'doc-payslip',
-                            //     'label' => 'Latest 3 Pay Slips',
-                            //     'desc' => 'Signed payslips from the last three months.',
-                            //     'icon' => 'receipt_long',
-                            //     'required' => true,
-                            // ],
-                            // [
-                            //     'id' => 'doc-letter',
-                            //     'label' => 'Employment / Confirmation Letter',
-                            //     'desc' => 'Letter from your employer confirming employment.',
-                            //     'icon' => 'description',
-                            //     'required' => true,
-                            // ],
-                            // [
-                            //     'id' => 'doc-bank',
-                            //     'label' => 'Bank Statement (3 months)',
-                            //     'desc' => 'Official statement from your bank.',
-                            //     'icon' => 'account_balance',
-                            //     'required' => true,
-                            // ],
-                            // [
-                            //     'id' => 'doc-purpose',
-                            //     'label' => 'Proof of Purpose (if applicable)',
-                            //     'desc' => 'Quotation, invoice, or supporting evidence.',
-                            //     'icon' => 'attach_file',
-                            //     'required' => false,
-                            // ],
-                            // [
-                            //     'id' => 'doc-other',
-                            //     'label' => 'Any Other Supporting Document',
-                            //     'desc' => 'Optional additional supporting files.',
-                            //     'icon' => 'folder_open',
-                            //     'required' => false,
-                            // ],
+                            [
+                                'id' => 'doc_payslip',
+                                'label' => 'Latest 3 Pay Slips',
+                                'desc' => 'Signed payslips from the last three months.',
+                                'icon' => 'receipt_long',
+                                'required' => true,
+                            ],
+                            [
+                                'id' => 'doc_letter',
+                                'label' => 'Employment / Confirmation Letter',
+                                'desc' => 'Letter from your employer confirming employment.',
+                                'icon' => 'description',
+                                'required' => true,
+                            ],
+                            [
+                                'id' => 'doc_bank',
+                                'label' => 'Bank Statement (3 months)',
+                                'desc' => 'Official statement from your bank.',
+                                'icon' => 'account_balance',
+                                'required' => true,
+                            ],
+                            [
+                                'id' => 'doc_purpose',
+                                'label' => 'Proof of Purpose (if applicable)',
+                                'desc' => 'Quotation, invoice, or supporting evidence.',
+                                'icon' => 'attach_file',
+                                'required' => false,
+                            ],
+                            [
+                                'id' => 'doc_other',
+                                'label' => 'Any Other Supporting Document',
+                                'desc' => 'Optional additional supporting files.',
+                                'icon' => 'folder_open',
+                                'required' => false,
+                            ],
                         ];
                     @endphp
 
@@ -350,7 +370,7 @@
                                 <span
                                     class="material-symbols-outlined text-slate-300 group-hover:text-primary text-[20px] shrink-0">upload</span>
                                 <input type="file" id="{{ $doc['id'] }}" class="hidden"
-                                    accept=".pdf,.jpg,.jpeg,.png"
+                                    accept=".pdf,.jpg,.jpeg,.png" name="{{ $doc['id'] }}"
                                     onchange="showFileName(this, '{{ $doc['id'] }}-name')" />
                             </label>
                         </div>
@@ -511,21 +531,25 @@
                         $declarations = [
                             [
                                 'id' => 'chk-read',
+                                'name' => 'chk_read',
                                 'text' =>
                                     'I have read and fully understood the loan terms and conditions stated above.',
                             ],
                             [
                                 'id' => 'chk-accurate',
+                                'name' => 'chk_accurate',
                                 'text' =>
                                     'I confirm that all information and documents provided in this application are true, accurate, and complete.',
                             ],
                             [
                                 'id' => 'chk-deduction',
+                                'name' => 'chk_deduction',
                                 'text' =>
                                     'I authorise the Fund to deduct monthly loan repayments from my salary/contributions as stated in this agreement.',
                             ],
                             [
                                 'id' => 'chk-default',
+                                'name' => 'chk_default',
                                 'text' =>
                                     'I understand the consequences of default and agree to notify the Fund immediately if I am unable to meet a repayment.',
                             ],
@@ -534,7 +558,7 @@
 
                     @foreach ($declarations as $decl)
                         <label for="{{ $decl['id'] }}" class="flex items-start gap-3 cursor-pointer group">
-                            <input type="checkbox" id="{{ $decl['id'] }}"
+                            <input type="checkbox" id="{{ $decl['id'] }}" name="{{ $decl['name'] }}"
                                 class="mt-0.5 size-4 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer"
                                 onchange="checkDeclarations()" />
                             <span
@@ -550,7 +574,7 @@
                     <h3 class="text-slate-900 dark:text-slate-100 font-bold mb-3">Member Signature</h3>
                     <div class="flex flex-col sm:flex-row gap-4 items-start">
                         <label for="chk-signature" class="flex items-center gap-3 cursor-pointer group">
-                            <input type="checkbox" id="chk-signature"
+                            <input type="checkbox" id="chk-signature" name="chk_signature"
                                 class="size-4 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer" />
                             <span
                                 class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
@@ -561,14 +585,14 @@
                             <div class="flex flex-col gap-1">
                                 <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Full
                                     Name</label>
-                                <input type="text" placeholder="Type your full legal name"
+                                <input type="text" placeholder="Type your full legal name" name="fullname"
                                     class="h-11 px-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition w-64" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-2 shrink-0">
                             <div class="flex flex-col gap-2">
                                 <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</label>
-                                <input type="date"
+                                <input type="date" name="signed_date"
                                     class="h-11 px-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition w-64"
                                     value="{{ date('Y-m-d') }}" />
                             </div>
