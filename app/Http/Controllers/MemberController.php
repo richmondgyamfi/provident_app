@@ -170,7 +170,7 @@ class MemberController extends Controller
         if (! $loan) {
             return redirect()->route('loan-application')->with('error', 'Failed to submit loan application. Please try again.');
         } else {
-            Log::info('Loan application created: '.$loan->application_ref.' for member ID: '.$loan->member_id);
+            Log::info('Loan application created: '.$loan->application_ref.' for User ID: '.$loan->user_id);
         }
 
         return redirect()->route('loan-application')->with('success', 'Loan application submitted! Ref: '.$loan->application_ref.' Confirmation email sent.');
