@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('max_amount', 12, 2);
             $table->integer('max_term_months');
             $table->text('description')->nullable();
+            $table->string('slug')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

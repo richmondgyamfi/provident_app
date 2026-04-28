@@ -91,5 +91,11 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+// default auth routes if page doesnt exist redirect to login
+Route::fallback(function () {
+    return redirect('/')->with('error', 'Page not found');
+});
+
+
 // Route::get('/register',[AuthController::class,'register'])->name('register');
 // Route::get('/register',[AuthController::class,'register'])->name('register');
