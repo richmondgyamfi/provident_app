@@ -10,7 +10,6 @@ use App\Models\LoanRepayment;
 use App\Models\LoanType;
 use App\Models\Member;
 use App\Models\OpeningBalance;
-use App\models\Staff;
 use App\Models\User;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
@@ -31,9 +30,6 @@ class MemberController extends Controller
         $user = Auth::user();
         $member = $user->member ?? Member::where('staff_no', $user->staff_no)->first();
 
-        // $staff = User::with(['job', 'staff'])->where('email', $user->email)->first();
-
-        // dd($staff->staff->unit->parent);
         $stats = [
             'personal_contributions' => Contribution::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
