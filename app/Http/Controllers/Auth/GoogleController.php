@@ -29,7 +29,6 @@ class GoogleController extends Controller
             // Check if user exists
             $user = User::where('email', $googleUser->getEmail())->first();
 
-<<<<<<< HEAD
             // $staff = DB::table('hr.staff as t1')
             //     ->leftJoin('hr.promotion as t4', 't1.staff_no', '=', 't4.staff_no')
             //     ->leftJoin('hr.unit as t3', 't4.unit_id', '=', 't3.id')
@@ -58,8 +57,21 @@ class GoogleController extends Controller
             // dd($staff);
 =======
             // using relationships instead of joins
-
->>>>>>> 2705002 (staff and user models edited)
+            // first get the staff record, it should have relationships to unit and job
+            // but you have to link it to the users record
+            // and then select the department and job title from the related records
+            // where the ucc_mail in the staff table matches the google email
+            // $staff = Staff::with(['unit', 'job', 'staff.users'])->where('ucc_mail', $googleUser->getEmail())->first();
+            $staff = Staff::with([
+                'promotion.unit', // t3 (department)
+                'promotion.job',  // t5 (job_title)
+                'unit',           // t6 (department_staff)
+                'job',            // t7 (job_title_staff)
+                'user',            // t2 (provident fund user)
+            ])
+                ->where('ucc_mail', $googleUser->getEmail())
+                ->first();
+            // dd($staff);
             // $staff = DB::table('hr.staff')->where('ucc_mail', $googleUser->getEmail())->first();
             // $staff->department = $staff->department ?? $staff->department_staff;
             // $staff->job_title = $staff->job_title ?? $staff->job_title_staff;
