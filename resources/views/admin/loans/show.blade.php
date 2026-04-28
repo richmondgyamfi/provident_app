@@ -35,7 +35,7 @@
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Applicant</p>
-                    <p class="font-bold text-slate-900 dark:text-slate-100">{{ $loan->user->name }}</p>
+                    <p class="font-bold text-slate-900 dark:text-slate-100">{{ $loan->user->fname .' '.$loan->user->mname.' '.$loan->user->lname }}</p>
                     <p class="text-sm text-slate-500">{{ $loan->user->staff_no }}</p>
                 </div>
                 <div>
