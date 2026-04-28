@@ -33,8 +33,14 @@ class Staff extends Model
     }
 
     // a staff can have many promotions but a promotion belongs to one staff
-    public function promotions()
+    public function promotion()
     {
         return $this->hasMany(Promotion::class, 'staff_no', 'staff_no');
+    }
+
+    // every staff is a user and every user is a staff
+    public function user()
+    {
+        return $this->hasOne(User::class, 'staff_no', 'staff_no');
     }
 }

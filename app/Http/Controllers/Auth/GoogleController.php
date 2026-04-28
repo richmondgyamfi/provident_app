@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\NewMemberWelcomeMail;
 use App\Models\RoleUser;
+use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,8 @@ class GoogleController extends Controller
                 ->leftJoin('provident_fund.users as t2', 't1.staff_no', '=', 't2.staff_no')
                 ->select('t1.*', 't3.long_name as department', 't6.long_name as department_staff', 't5.title as job_title', 't7.title as job_title_staff')
                 ->where('t1.ucc_mail', $googleUser->getEmail())->first();
+
+            // using relationships instead of joins
 
             // $staff = DB::table('hr.staff')->where('ucc_mail', $googleUser->getEmail())->first();
             $staff->department = $staff->department ?? $staff->department_staff;

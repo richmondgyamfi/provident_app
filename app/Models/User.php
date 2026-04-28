@@ -96,4 +96,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Job::class, 'title', 'job_title');
     }
+
+    // every user has a unit but every unit does not have a user
+
 }

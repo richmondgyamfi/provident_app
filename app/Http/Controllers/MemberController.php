@@ -9,6 +9,7 @@ use App\Models\Loan;
 use App\Models\LoanType;
 use App\Models\Member;
 use App\Models\OpeningBalance;
+use App\models\Staff;
 use App\Models\User;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class MemberController extends Controller
         $user = Auth::user();
         $member = $user->member ?? Member::where('staff_no', $user->staff_no)->first();
 
+        // $staff = User::with(['job', 'staff'])->where('email', $user->email)->first();
+
+        // dd($staff->staff->unit->parent);
         $stats = [
             'personal_contributions' => Contribution::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
@@ -95,7 +99,7 @@ class MemberController extends Controller
             'amount' => 'required|numeric|min:1000|max:50000',
             'term_months' => 'required|integer|min:6|max:48',
             'purpose' => 'required|string|max:1000',
-            'chk_read' => 'required|accepted', 
+            'chk_read' => 'required|accepted',
             'chk_accurate' => 'required|accepted',
             'chk_deduction' => 'required|accepted',
             'chk_default' => 'required|accepted',
@@ -142,7 +146,6 @@ class MemberController extends Controller
         ];
 
         $loan = Loan::create($loanData);
-        
 
         // Store documents
         foreach (['doc_id', 'doc_payslip', 'doc_letter', 'doc_bank', 'doc_purpose', 'doc_other'] as $doc) {
@@ -154,11 +157,12 @@ class MemberController extends Controller
 
         // Send confirmation email
         Mail::to(Auth::user()->email)->send(new LoanApplicationSubmittedMail($loan));
-        if (!$loan) {
+        if (! $loan) {
             return redirect()->route('loan-application')->with('error', 'Failed to submit loan application. Please try again.');
-        }else{
+        } else {
             Log::info('Loan application created: '.$loan->application_ref.' for member ID: '.$loan->member_id);
         }
+
         return redirect()->route('loan-application')->with('success', 'Loan application submitted! Ref: '.$loan->application_ref.' Confirmation email sent.');
     }
 
