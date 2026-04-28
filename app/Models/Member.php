@@ -29,5 +29,10 @@ class Member extends Model
 
     // protected $table = 'hr.staff';
 
-
+    // define relationships here
+    // every member is a staff but not every staff is a member
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_no', 'staff_no');
+    }
 }
