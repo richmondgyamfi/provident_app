@@ -35,7 +35,12 @@ class Staff extends Model
         return $this->belongsTo(Job::class, 'job_id');
     }
 
+<<<<<<< HEAD
     public function user()
+=======
+    // a staff can have many promotions but a promotion belongs to one staff
+    public function promotion()
+>>>>>>> 2705002 (staff and user models edited)
     {
         return $this->hasOne(User::class, 'staff_no', 'staff_no');
     }
@@ -56,5 +61,11 @@ class Staff extends Model
     public function getJobTitleAttribute()
     {
         return $this->promotion->job->title ?? $this->job->title ?? null;
+    }
+
+    // every staff is a user and every user is a staff
+    public function user()
+    {
+        return $this->hasOne(User::class, 'staff_no', 'staff_no');
     }
 }
