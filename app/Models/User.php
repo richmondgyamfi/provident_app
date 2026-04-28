@@ -20,6 +20,11 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    protected $connection = 'mysql';
+
+    // Explicitly define the table name
+    protected $table = 'users';
+
     protected $fillable = [
         'fname',
         'mname',

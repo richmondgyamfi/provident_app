@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
-            $table->string('loan_type');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('loan_type_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 12, 2);
             $table->decimal('interest_rate', 5, 2);
             $table->integer('term_months');
             $table->decimal('monthly_payment', 12, 2);
             $table->decimal('total_repayable', 12, 2);
             $table->decimal('outstanding_balance', 12, 2);
-            $table->boolean('chk-read')->default(false);
-            $table->boolean('chk-accurate')->default(false);
-            $table->boolean('chk-deduction')->default(false);
-            $table->boolean('chk-default')->default(false);
-            $table->boolean('chk-signature')->default(false);
+            $table->string('chk_read')->default('off');
+            $table->string('chk_accurate')->default('off');
+            $table->string('chk_deduction')->default('off');
+            $table->string('chk_default')->default('off');
+            $table->string('chk_signature')->default('off');
             $table->string('fullname')->nullable();
             $table->date('signed_date')->nullable();
             $table->string('doc_id')->nullable();

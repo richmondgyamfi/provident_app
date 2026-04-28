@@ -78,5 +78,6 @@ class DatabaseSeeder extends Seeder
         // $superUser->roles()->attach($superAdminRole);
 
         $this->call(ContributionSeeder::class);
+        $this->call(LoanTypeSeeder::class);
     }
 }

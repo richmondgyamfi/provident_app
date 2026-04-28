@@ -12,7 +12,7 @@ class Loan extends Model
 
     protected $fillable = [
         'user_id',
-        'loan_type',
+        'loan_type_id',
         'amount',
         'interest_rate',
         'term_months',
@@ -52,7 +52,7 @@ class Loan extends Model
 
         static::creating(function ($model) {
             if (Auth::check()) {
-                $model->member_id = Auth::id(); // or map from user staff_no
+                $model->user_id = Auth::user()->id; // or map from user staff_no
             }
             if (! $model->application_ref) {
                 $model->application_ref = 'LN-'.date('Y').'-'.str_pad($model->id ?? rand(1, 99999), 5, '0', STR_PAD_LEFT);
@@ -65,6 +65,11 @@ class Loan extends Model
     public function member()
     {
         return $this->belongsTo(Member::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function loanType()

@@ -97,14 +97,18 @@
                     <!-- Loan Type -->
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-900 dark:text-slate-100 text-sm font-bold">Loan Type</label>
-                        <select id="loan-type" name="loan_type"
+                        <select id="loan-type" name="loan_type_id"
                             class="form-select flex w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base font-medium"
                             onchange="recalc()">
-                            @if ($staffmember)
+                            @foreach ($loanTypes as $loanType)
+                                <option value="{{ $loanType->id }}">{{ $loanType->name }}</option>
+                                
+                            @endforeach
+                            {{-- @if ($staffmember)
                             <option value="member">Member Loan</option>
                             @else
                             <option value="non-member">Non-Member Loan</option>
-                            @endif
+                            @endif --}}
                         </select>
                     </div>
                     <!-- Term -->

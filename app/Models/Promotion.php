@@ -24,4 +24,16 @@ class Promotion extends Model
     {
         return $this->belongsTo(Staff::class, 'staff_no', 'staff_no');
     }
+
+    public function unit()
+    {
+        // This connects t4 (promotion) to t3 (unit)
+        return $this->belongsTo(Unit::class, 'unit_id');
+    }
+
+    public function job()
+    {
+        // This connects t4 (promotion) to t5 (job)
+        return $this->belongsTo(Job::class, 'job_id');
+    }
 }

@@ -41,7 +41,7 @@ class MemberController extends Controller
             'current_balance' => OpeningBalance::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
             })->sum('amount'),
-            'active_loans' => Loan::whereHas('member', function ($q) use ($user) {
+            'active_loans' => Loan::whereHas('user', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
             })->where('status', 'approved')->sum('outstanding_balance') ?: 0,
         ];
@@ -52,7 +52,16 @@ class MemberController extends Controller
 
     public function loanApplication()
     {
-        $loanTypes = LoanType::all();
+        // display or pick loan types depending on if staff is a member show member loan types else show non member loan types
+        // $loanTypes = [];
+        $staffmember = Member::where('staff_no', Auth::user()->staff_no)->first();
+        if ($staffmember) {
+            $loanTypes = LoanType::where('slug', 'member-loan')->where('is_active', true)->get();
+        } else {
+            $loanTypes = LoanType::where('slug', 'non-member-loan')->where('is_active', true)->get();
+        }
+        // $loanTypes = LoanType::where('is_active', true)->get();
+        // $loanTypes = LoanType::all();
         // check if staff is a member
         $staffmember = Member::where('staff_no', Auth::user()->staff_no)->first();
 
@@ -93,9 +102,8 @@ class MemberController extends Controller
      */
     public function storeLoan(Request $request)
     {
-        // dd($request->all());
         $request->validate([
-            'loan_type' => 'required',
+            'loan_type_id' => 'required|exists:loan_types,id',
             'amount' => 'required|numeric|min:1000|max:50000',
             'term_months' => 'required|integer|min:6|max:48',
             'purpose' => 'required|string|max:1000',
@@ -107,20 +115,21 @@ class MemberController extends Controller
             'fullname' => 'required|string|max:255',
             'signed_date' => 'required|date',
             'doc_id' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
-            'doc_payslip' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
-            'doc_letter' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
-            'doc_bank' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
-            'doc_purpose' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_payslip' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_letter' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_bank' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'doc_purpose' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
             'doc_other' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
         ]);
 
         $loanType = LoanType::findOrFail($request->loan_type_id);
         $monthly = $this->calcPMT($request->amount, $loanType->interest_rate, $request->term_months);
         $totalRepay = $monthly * $request->term_months;
+        // dd($request->all());
 
         $loanData = [
             'user_id' => Auth::user()->id,
-            'loan_type' => $request->loan_type_id,
+            'loan_type_id' => $request->loan_type_id,
             'amount' => $request->amount,
             'interest_rate' => $loanType->interest_rate,
             'term_months' => $request->term_months,
@@ -144,6 +153,7 @@ class MemberController extends Controller
             'doc_other' => $request->file('doc_other') ? $request->file('doc_other')->getClientOriginalName() : null,
             'application_ref' => 'LN-'.strtoupper(substr(md5(uniqid(rand(), true)), 0, 8)),
         ];
+        // dd($loanData);
 
         $loan = Loan::create($loanData);
 
@@ -160,7 +170,7 @@ class MemberController extends Controller
         if (! $loan) {
             return redirect()->route('loan-application')->with('error', 'Failed to submit loan application. Please try again.');
         } else {
-            Log::info('Loan application created: '.$loan->application_ref.' for member ID: '.$loan->member_id);
+            Log::info('Loan application created: '.$loan->application_ref.' for User ID: '.$loan->user_id);
         }
 
         return redirect()->route('loan-application')->with('success', 'Loan application submitted! Ref: '.$loan->application_ref.' Confirmation email sent.');
