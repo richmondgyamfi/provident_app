@@ -40,11 +40,11 @@
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
                                 <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                                    {{ substr($loan->member->name ?? 'N/A', 0, 2) }}
+                                    {{ substr($loan->user->fname .' '.$loan->user->mname.' '.$loan->user->lname ?? 'N/A', 0, 2) }}
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-slate-900 dark:text-slate-100">{{ $loan->member->name ?? 'N/A' }}</p>
-                                    <p class="text-xs text-slate-500">{{ $loan->member->staff_no }}</p>
+                                    <p class="font-semibold text-slate-900 dark:text-slate-100">{{ $loan->user->fname .' '.$loan->user->mname.' '.$loan->user->lname ?? 'N/A' }}</p>
+                                    <p class="text-xs text-slate-500">{{ $loan->user->staff_no }}</p>
                                 </div>
                             </div>
                         </td>

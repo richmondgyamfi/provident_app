@@ -13,13 +13,14 @@ class LoanController extends Controller
 {
     public function index()
     {
-        $loans = Loan::with(['member', 'loanType'])->latest()->paginate(20);
+        $loans = Loan::with(['user', 'loanType'])->latest()->paginate(20);
+        // dd($loans);
         return view('admin.loans.index', compact('loans'));
     }
 
     public function show(Loan $loan)
     {
-        $loan->load(['member', 'loanType', 'repayments']);
+        $loan->load(['user', 'loanType', 'repayments']);
         return view('admin.loans.show', compact('loan'));
     }
 
