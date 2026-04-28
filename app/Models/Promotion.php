@@ -17,4 +17,11 @@ class Promotion extends Model
         // Throw an error if anything tries to save to this database
         throw new \Exception('The HR database is read-only.');
     }
+
+    // specify all relationships with the hr database here
+    // every promotion belongs to a staff but every staff can have many promotions
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_no', 'staff_no');
+    }
 }
