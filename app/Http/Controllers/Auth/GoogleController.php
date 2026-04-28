@@ -29,6 +29,7 @@ class GoogleController extends Controller
             // Check if user exists
             $user = User::where('email', $googleUser->getEmail())->first();
 
+<<<<<<< HEAD
             // $staff = DB::table('hr.staff as t1')
             //     ->leftJoin('hr.promotion as t4', 't1.staff_no', '=', 't4.staff_no')
             //     ->leftJoin('hr.unit as t3', 't4.unit_id', '=', 't3.id')
@@ -55,6 +56,10 @@ class GoogleController extends Controller
                 ->where('ucc_mail', $googleUser->getEmail())
                 ->first();
             // dd($staff);
+=======
+            // using relationships instead of joins
+
+>>>>>>> 2705002 (staff and user models edited)
             // $staff = DB::table('hr.staff')->where('ucc_mail', $googleUser->getEmail())->first();
             // $staff->department = $staff->department ?? $staff->department_staff;
             // $staff->job_title = $staff->job_title ?? $staff->job_title_staff;
