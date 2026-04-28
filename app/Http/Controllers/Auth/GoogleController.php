@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\NewMemberWelcomeMail;
 use App\Models\RoleUser;
 use App\Models\Staff;
+use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

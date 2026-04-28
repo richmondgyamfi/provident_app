@@ -10,6 +10,7 @@ use App\Models\LoanRepayment;
 use App\Models\LoanType;
 use App\Models\Member;
 use App\Models\OpeningBalance;
+use App\models\Staff;
 use App\Models\User;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
@@ -30,6 +31,9 @@ class MemberController extends Controller
         $user = Auth::user();
         $member = $user->member ?? Member::where('staff_no', $user->staff_no)->first();
 
+        // $staff = User::with(['job', 'staff'])->where('email', $user->email)->first();
+
+        // dd($staff->staff->unit->parent);
         $stats = [
             'personal_contributions' => Contribution::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
@@ -103,6 +107,7 @@ class MemberController extends Controller
 
     public function loanApplication()
     {
+        // display or pick loan types depending on if staff is a member show member loan types else show non member loan types
         // display or pick loan types depending on if staff is a member show member loan types else show non member loan types
         // $loanTypes = [];
         $staffmember = Member::where('staff_no', Auth::user()->staff_no)->first();
@@ -221,7 +226,7 @@ class MemberController extends Controller
         if (! $loan) {
             return redirect()->route('loan-application')->with('error', 'Failed to submit loan application. Please try again.');
         } else {
-            Log::info('Loan application created: '.$loan->application_ref.' for User ID: '.$loan->user_id);
+            Log::info('Loan application created: '.$loan->application_ref.' for member ID: '.$loan->member_id);
         }
 
         return redirect()->route('loan-application')->with('success', 'Loan application submitted! Ref: '.$loan->application_ref.' Confirmation email sent.');
