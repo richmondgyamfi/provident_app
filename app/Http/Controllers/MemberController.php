@@ -6,6 +6,7 @@ use App\Mail\LoanApplicationSubmittedMail;
 use App\Mail\NewMemberWelcomeMail;
 use App\Models\Contribution;
 use App\Models\Loan;
+use App\Models\LoanRepayment;
 use App\Models\LoanType;
 use App\Models\Member;
 use App\Models\OpeningBalance;
@@ -33,6 +34,15 @@ class MemberController extends Controller
             'personal_contributions' => Contribution::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
             })->sum('contribution_amount') ?: 0,
+            'total_contributions' => Contribution::whereHas('member', function ($q) use ($user) {
+                $q->where('staff_no', $user->staff_no);
+            })->count(),
+            'total_repayments' => LoanRepayment::whereHas('loan.user', function ($q) use ($user) {
+                $q->where('staff_no', $user->staff_no);
+            })->sum('amount') ?: 0,
+            'total_repayments_count' => LoanRepayment::whereHas('loan.user', function ($q) use ($user) {
+                $q->where('staff_no', $user->staff_no);
+            })->count(),
             // 'interest_earned' => 0, // Add InterestEarning model if exists
             'current_balance' => OpeningBalance::whereHas('member', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
@@ -41,10 +51,54 @@ class MemberController extends Controller
             'active_loans' => Loan::whereHas('user', function ($q) use ($user) {
                 $q->where('staff_no', $user->staff_no);
             })->where('status', 'approved')->sum('outstanding_balance') ?: 0,
+            'total_loans' => Loan::whereHas('user', function ($q) use ($user) {
+                $q->where('staff_no', $user->staff_no);
+            })->count(),
         ];
+
+        // Get recent contributions for this user
+        $recentContributions = Contribution::whereHas('member', function ($q) use ($user) {
+            $q->where('staff_no', $user->staff_no);
+        })->latest()->take(5)->get();
+
+        // Get recent loan repayments for this user
+        $recentRepayments = LoanRepayment::whereHas('loan.user', function ($q) use ($user) {
+            $q->where('staff_no', $user->staff_no);
+        })->with('loan')->latest()->take(5)->get();
+
+        // Get recent activities (combining contributions and repayments)
+        $activities = collect();
+
+        // Add recent contributions to activities
+        foreach ($recentContributions as $contribution) {
+            $activities->push([
+                'type' => 'contribution',
+                'title' => 'Contribution Received',
+                'description' => 'Monthly contribution of ₵'.number_format($contribution->contribution_amount, 2),
+                'date' => $contribution->created_at,
+                'icon' => 'payments',
+                'color' => 'emerald',
+            ]);
+        }
+
+        // Add recent repayments to activities
+        foreach ($recentRepayments as $repayment) {
+            $activities->push([
+                'type' => 'repayment',
+                'title' => 'Loan Repayment',
+                'description' => 'Payment of ₵'.number_format($repayment->amount, 2).' for Loan #'.$repayment->loan->application_ref,
+                'date' => $repayment->created_at,
+                'icon' => 'receipt_long',
+                'color' => 'blue',
+            ]);
+        }
+
+        // Sort activities by date (most recent first) and take top 10
+        $recentActivities = $activities->sortByDesc('date')->take(10);
+
         // dd($stats);
 
-        return view('members.dashboard', compact('member', 'stats'));
+        return view('members.dashboard', compact('member', 'stats', 'recentContributions', 'recentRepayments', 'recentActivities'));
     }
 
     public function loanApplication()

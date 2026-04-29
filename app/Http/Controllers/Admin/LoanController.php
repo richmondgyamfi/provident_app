@@ -63,6 +63,9 @@ class LoanController extends Controller
             'reference' => 'nullable|string|max:100',
         ]);
 
+        // get installment_number for the repayment
+        $installmentNumber = $loan->repayments()->count() + 1;
+
         LoanRepayment::create([
             'loan_id' => $loan->id,
             'amount' => $request->amount,
@@ -70,6 +73,7 @@ class LoanController extends Controller
             'payment_method' => $request->payment_method,
             'reference' => $request->reference,
             'recorded_by' => Auth::id(),
+            'installment_number' => $installmentNumber,
         ]);
 
         return redirect()->route('admin.loans.show', $loan)->with('success', 'Repayment recorded.');
