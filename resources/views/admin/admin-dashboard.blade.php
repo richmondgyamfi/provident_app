@@ -14,9 +14,21 @@
                 <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total Members
                 </p>
                 <div class="flex items-end justify-between">
-<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{{ number_format($stats['members_count']) }}</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{{ number_format($stats['members_count']) }}</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
-                        +2.4%
+                        Active
+                        <span class="material-symbols-outlined text-sm">people</span>
+                    </span>
+                </div>
+            </div>
+
+            <div
+                class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total Contributions</p>
+                <div class="flex items-end justify-between">
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_contributions'], 2) }}</h3>
+                    <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
+                        +{{ $stats['recent_contributions_count'] }}
                         <span class="material-symbols-outlined text-sm">trending_up</span>
                     </span>
                 </div>
@@ -24,25 +36,23 @@
 
             <div
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total
-                    Contributions</p>
+                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Loans Issued</p>
                 <div class="flex items-end justify-between">
-<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS {{ number_format($stats['total_contributions'] / 1000000, 1) }}M</h3>
-                    <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">
-                        -1.2%
-                        <span class="material-symbols-outlined text-sm">trending_down</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['loans_issued'], 2) }}</h3>
+                    <span class="text-blue-500 text-xs font-bold flex items-center gap-0.5">
+                        {{ $stats['active_loans'] }} active
+                        <span class="material-symbols-outlined text-sm">account_balance</span>
                     </span>
                 </div>
             </div>
 
             <div
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Loans Issued
-                </p>
+                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total Repayments</p>
                 <div class="flex items-end justify-between">
-<h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS {{ number_format($stats['loans_issued'] / 1000000, 1) }}M</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_repayments'], 2) }}</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
-                        +5.6%
+                        +{{ $stats['recent_repayments_count'] }}
                         <span class="material-symbols-outlined text-sm">trending_up</span>
                     </span>
                 </div>
@@ -50,37 +60,24 @@
 
             <div
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Repayments</p>
+                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Total Withdrawals</p>
                 <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS 0</h3>
-                    <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
-                        +3.1%
-                        <span class="material-symbols-outlined text-sm">trending_up</span>
-                    </span>
-                </div>
-            </div>
-
-            <div
-                class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Withdrawals</p>
-                <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">GHS 0</h3>
-                    <span class="text-accent-red text-xs font-bold flex items-center gap-0.5">
-                        -0.5%
-                        <span class="material-symbols-outlined text-sm">trending_down</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_withdrawals'], 2) }}</h3>
+                    <span class="text-amber-500 text-xs font-bold flex items-center gap-0.5">
+                        {{ $stats['pending_withdrawals'] }} pending
+                        <span class="material-symbols-outlined text-sm">schedule</span>
                     </span>
                 </div>
             </div>
 
             <div
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm ring-2 ring-primary ring-opacity-10">
-                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Fund Balance
-                </p>
+                <p class="text-slate-500 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">Fund Balance</p>
                 <div class="flex items-end justify-between">
-                    <h3 class="text-xl sm:text-2xl font-bold text-primary">GHS 0</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-primary">₵{{ number_format($stats['fund_balance'], 2) }}</h3>
                     <span class="text-emerald-500 text-xs font-bold flex items-center gap-0.5">
-                        +4.2%
-                        <span class="material-symbols-outlined text-sm">trending_up</span>
+                        Available
+                        <span class="material-symbols-outlined text-sm">account_balance_wallet</span>
                     </span>
                 </div>
             </div>
@@ -88,7 +85,7 @@
         </div>
 
         <!-- ── Chart + Asset Distribution ─────────────────────────── -->
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
+        {{-- <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
 
             <!-- Contribution Trends Chart -->
             <div
@@ -179,7 +176,7 @@
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Fixed
                                     Deposits</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['fund_balance'] * 0.65, 0) }}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -187,14 +184,14 @@
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Government
                                     Bonds</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['fund_balance'] * 0.25, 0) }}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <div class="size-2 rounded-full bg-slate-200 dark:bg-slate-700"></div>
                                 <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Liquid Cash</span>
                             </div>
-                            <span class="text-xs font-bold text-slate-900 dark:text-white">GHS 0</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['fund_balance'] * 0.10, 0) }}</span>
                         </div>
                     </div>
 
@@ -205,6 +202,295 @@
                 </div>
             </div>
 
+        </div> --}}
+        
+
+        <!-- ── Statistics Summary ──────────────────────────────── -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+            <div class="px-4 sm:px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Fund Statistics Overview</h3>
+                <p class="text-sm text-slate-500 mt-1">Complete summary of all provident fund statistics</p>
+            </div>
+
+            <div class="p-4 sm:p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Members Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Members</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Total Members</span>
+                                <span class="font-bold text-slate-900 dark:text-white">{{ number_format($stats['members_count']) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contributions Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Contributions</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Total Amount</span>
+                                <span class="font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_contributions'], 2) }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Recent (30 days)</span>
+                                <span class="font-bold text-emerald-600">{{ $stats['recent_contributions_count'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loans Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Loans</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Total Issued</span>
+                                <span class="font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['loans_issued'], 2) }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Active Loans</span>
+                                <span class="font-bold text-blue-600">{{ $stats['active_loans'] }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Pending Loans</span>
+                                <span class="font-bold text-yellow-600">{{ $stats['pending_loans'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Repayments Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Repayments</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Total Amount</span>
+                                <span class="font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_repayments'], 2) }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Recent (30 days)</span>
+                                <span class="font-bold text-emerald-600">{{ $stats['recent_repayments_count'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Withdrawals Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Withdrawals</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Total Amount</span>
+                                <span class="font-bold text-slate-900 dark:text-white">₵{{ number_format($stats['total_withdrawals'], 2) }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Pending</span>
+                                <span class="font-bold text-amber-600">{{ $stats['pending_withdrawals'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fund Balance Statistics -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Fund Balance</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Current Balance</span>
+                                <span class="font-bold text-primary">₵{{ number_format($stats['fund_balance'], 2) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Real-time Activities ──────────────────────────────── -->
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- Recent Activities Feed -->
+            <div class="xl:col-span-1">
+                <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">schedule</span>
+                    Recent Activities
+                </h2>
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 space-y-4 max-h-96 overflow-y-auto">
+                    @forelse($recentActivities as $activity)
+                    <div class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+                        <div class="size-8 rounded-lg bg-{{ $activity['color'] }}-100 dark:bg-{{ $activity['color'] }}-900/30 flex items-center justify-center text-{{ $activity['color'] }}-600 dark:text-{{ $activity['color'] }}-400 flex-shrink-0">
+                            <span class="material-symbols-outlined text-sm">{{ $activity['icon'] }}</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ $activity['title'] }}</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">{{ $activity['description'] }}</p>
+                            <p class="text-xs text-slate-400 mt-1">{{ $activity['date']->diffForHumans() }}</p>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="text-center py-8 text-slate-500">
+                        <span class="material-symbols-outlined text-3xl block mb-2 opacity-50">schedule</span>
+                        <p class="text-sm">No recent activities</p>
+                    </div>
+                    @endforelse
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Quick Stats</h3>
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-yellow-600 dark:text-yellow-400">schedule</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Pending Loans</p>
+                                <p class="text-xs text-slate-500">Awaiting approval</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-bold text-slate-900 dark:text-slate-100">{{ $stats['pending_loans'] }}</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-blue-600 dark:text-blue-400">account_balance</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Active Loans</p>
+                                <p class="text-xs text-slate-500">Currently outstanding</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-bold text-slate-900 dark:text-slate-100">{{ $stats['active_loans'] }}</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="size-8 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-amber-600 dark:text-amber-400">wallet</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Pending Withdrawals</p>
+                                <p class="text-xs text-slate-500">Under review</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-bold text-slate-900 dark:text-slate-100">{{ $stats['pending_withdrawals'] }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contribution Trends Chart -->
+            <div class="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-3 mb-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Contribution Trends</h3>
+                        <p class="text-sm text-slate-500">Monthly contribution amounts over the last 6 months</p>
+                    </div>
+                    <select
+                        class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold focus:ring-primary focus:border-primary">
+                        <option>Last 6 Months</option>
+                        <option>Last Year</option>
+                    </select>
+                </div>
+
+                <div class="h-[260px] sm:h-[300px] w-full relative">
+                    <!-- Grid lines -->
+                    <div class="absolute inset-0 flex flex-col justify-between pt-2">
+                        <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                        <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                        <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                        <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                        <div class="border-t border-slate-100 dark:border-slate-800 w-full"></div>
+                    </div>
+
+                    <!-- Dynamic Line chart -->
+                    @php
+                        $maxAmount = $contributionTrends->max('amount') ?: 1;
+                        $chartHeight = 250;
+                        $chartWidth = 1000;
+                        $points = '';
+
+                        foreach ($contributionTrends as $index => $trend) {
+                            $x = ($index / (count($contributionTrends) - 1)) * $chartWidth;
+                            $y = $chartHeight - (($trend['amount'] / $maxAmount) * ($chartHeight - 50));
+                            $points .= ($index > 0 ? ' ' : '') . $x . ',' . $y;
+                        }
+                    @endphp
+
+                    <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 {{ $chartWidth }} {{ $chartHeight }}">
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#1773cf" />
+                                <stop offset="100%" stop-color="#1773cf" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+
+                        @if($contributionTrends->count() > 1)
+                            <!-- Area fill -->
+                            <path d="M0 {{ $chartHeight }}
+                                @foreach($contributionTrends as $index => $trend)
+                                    @php
+                                        $x = ($index / (count($contributionTrends) - 1)) * $chartWidth;
+                                        $y = $chartHeight - (($trend['amount'] / $maxAmount) * ($chartHeight - 50));
+                                    @endphp
+                                    L{{ $x }} {{ $y }}
+                                @endforeach
+                                L{{ $chartWidth }} {{ $chartHeight }} Z"
+                                fill="url(#chartGradient)" opacity="0.1"/>
+
+                            <!-- Line -->
+                            <polyline fill="none" stroke="#1773cf" stroke-width="3" stroke-linecap="round"
+                                points="{{ $points }}"/>
+                        @endif
+
+                        <!-- Data points -->
+                        @foreach($contributionTrends as $index => $trend)
+                            @php
+                                $x = ($index / (count($contributionTrends) - 1)) * $chartWidth;
+                                $y = $chartHeight - (($trend['amount'] / $maxAmount) * ($chartHeight - 50));
+                            @endphp
+                            <circle cx="{{ $x }}" cy="{{ $y }}" r="4" fill="#1773cf" stroke="white" stroke-width="2"/>
+                        @endforeach
+                    </svg>
+
+                    <!-- Y-axis labels (amounts) -->
+                    <div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] font-bold text-slate-400 pr-2">
+                        <span>₵{{ number_format($maxAmount, 0) }}</span>
+                        <span>₵{{ number_format($maxAmount * 0.75, 0) }}</span>
+                        <span>₵{{ number_format($maxAmount * 0.5, 0) }}</span>
+                        <span>₵{{ number_format($maxAmount * 0.25, 0) }}</span>
+                        <span>₵0</span>
+                    </div>
+
+                    <!-- X-axis labels (months) -->
+                    <div class="absolute bottom-[-24px] w-full flex justify-between px-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                        @foreach($contributionTrends as $trend)
+                            <span>{{ $trend['month'] }}</span>
+                        @endforeach
+                    </div>
+
+                    <!-- Tooltip on hover (simplified) -->
+                    <div class="absolute top-4 right-4 bg-slate-900 text-white text-xs px-3 py-2 rounded-lg opacity-0 hover:opacity-100 transition-opacity">
+                        Hover over points for details
+                    </div>
+                </div>
+
+                <!-- Chart summary -->
+                <div class="mt-4 grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <p class="text-xs text-slate-500">Total This Period</p>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">₵{{ number_format($contributionTrends->sum('amount'), 2) }}</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500">Avg Monthly</p>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">₵{{ number_format($contributionTrends->avg('amount'), 2) }}</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500">Peak Month</p>
+                        <p class="text-sm font-bold text-slate-900 dark:text-white">{{ $contributionTrends->where('amount', $contributionTrends->max('amount'))->first()['month'] ?? 'N/A' }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ── Recent Transactions Table ───────────────────────────── -->
@@ -245,35 +531,31 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-
-                        <!-- Row 1 -->
+                        @forelse($recentTransactions as $transaction)
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                             <td class="px-4 sm:px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">
-                                        JD</div>
+                                    <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">
+                                        {{ substr($transaction['member_name'], 0, 1) }}{{ substr(explode(' ', $transaction['member_name'])[1] ?? '', 0, 1) }}
+                                    </div>
                                     <div>
-                                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Jane Doe
-                                        </p>
-                                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-2938</p>
+                                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">{{ $transaction['member_name'] }}</p>
+                                        <p class="text-[10px] text-slate-500 mt-1">ID: {{ $transaction['member_id'] }}</p>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-xs font-mono text-slate-500">TXN-48291039</td>
+                            <td class="px-4 sm:px-6 py-4 text-xs font-mono text-slate-500">{{ $transaction['transaction_id'] }}</td>
                             <td class="px-4 sm:px-6 py-4">
-                                <div
-                                    class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                                    <span class="material-symbols-outlined text-primary text-sm">payments</span>
-                                    Contribution
+                                <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                                    <span class="material-symbols-outlined text-{{ $transaction['type_color'] }} text-sm">{{ $transaction['type_icon'] }}</span>
+                                    {{ $transaction['type'] }}
                                 </div>
                             </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
-                            <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
+                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">₵{{ number_format($transaction['amount'] / 100, 2) }}</td>
+                            <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">{{ $transaction['date']->format('M d, Y') }}</td>
                             <td class="px-4 sm:px-6 py-4">
-                                <span
-                                    class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">
-                                    Completed
+                                <span class="px-2 py-1 rounded-full bg-{{ $transaction['status_color'] }}-100 text-{{ $transaction['status_color'] }}-700 dark:bg-{{ $transaction['status_color'] }}-900/30 dark:text-{{ $transaction['status_color'] }}-400 text-[10px] font-bold uppercase">
+                                    {{ $transaction['status'] }}
                                 </span>
                             </td>
                             <td class="px-4 sm:px-6 py-4 text-right">
@@ -282,118 +564,14 @@
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Row 2 -->
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                            <td class="px-4 sm:px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center shrink-0"
-                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALEDa7sRgjbjJ8msAecvciiaMtk9xJoVVtch2wz26W5YM0k9uEOS18PcxEJwzvZo1pUSQiXQO1hXaGOnwXWDdmaGykLvjnYJSZlmLxVcbb_jfr-M84_DgNmyS77_g7WQZrFbRSZX2VANAdLekHO9dCEpq6X7GxUw0ZI-Yxof7NC_RF4WJa4zhgaZQkXdWWl5Xo8vTT4qSem1Hp-GpEI0nWvOs4VwYY1eYA3JF-ytFv45Fb1lcfIEDH5HpgxA4IcFCrjIbB-qa6_00')"
-                                        aria-label="User avatar for Michael Smith"></div>
-                                    <div>
-                                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Michael
-                                            Smith</p>
-                                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-8472</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-xs font-mono text-slate-500">TXN-48291040</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <div
-                                    class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                                    <span class="material-symbols-outlined text-accent-gold text-sm">receipt_long</span>
-                                    Loan Disbursed
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
-                            <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 24, 2023</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <span
-                                    class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">
-                                    Completed
-                                </span>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-right">
-                                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                                    <span class="material-symbols-outlined">more_vert</span>
-                                </button>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="px-4 sm:px-6 py-8 text-center text-slate-500">
+                                <span class="material-symbols-outlined text-3xl block mb-2 opacity-50">receipt_long</span>
+                                <p class="text-sm">No recent transactions</p>
                             </td>
                         </tr>
-
-                        <!-- Row 3 -->
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                            <td class="px-4 sm:px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">
-                                        RS</div>
-                                    <div>
-                                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Robert
-                                            Shaw</p>
-                                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-5521</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-xs font-mono text-slate-500">TXN-48291041</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <div
-                                    class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                                    <span class="material-symbols-outlined text-accent-red text-sm">wallet</span>
-                                    Withdrawal
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
-                            <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <span
-                                    class="px-2 py-1 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[10px] font-bold uppercase">
-                                    Pending
-                                </span>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-right">
-                                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                                    <span class="material-symbols-outlined">more_vert</span>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <!-- Row 4 -->
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                            <td class="px-4 sm:px-6 py-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center shrink-0"
-                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRqibhZLf2o7BvdF0aLDOKoqQqDleSF-EjWNUF6MDNhNEuE1cGu_Q60NTCowYVYixu0xVpnoj3lACCbr5JyCqr6PQsMGBul4uZpMuIcduANZEv4buXfoA_Va_PwMUKBjAbyWVYneYvs-hudTK12jZq9unJ-My5fz-Iecr0ycRxHy700X4I27hyU5Z6IcnqcyY2vq_esobWFXuZCYplTF0W_n9Gnn0RqdfLfymJKrT4XLirB7sVj3Xy7xtOue8TviJI0FiA_E3MCfk')"
-                                        aria-label="User avatar for Sarah Wilson"></div>
-                                    <div>
-                                        <p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Sarah
-                                            Wilson</p>
-                                        <p class="text-[10px] text-slate-500 mt-1">ID: PF-1102</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-xs font-mono text-slate-500">TXN-48291042</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <div
-                                    class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                                    <span class="material-symbols-outlined text-primary text-sm">history</span>
-                                    Loan Repayment
-                                </div>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">GHS 0</td>
-                            <td class="px-4 sm:px-6 py-4 text-xs text-slate-500">Oct 23, 2023</td>
-                            <td class="px-4 sm:px-6 py-4">
-                                <span
-                                    class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase">
-                                    Completed
-                                </span>
-                            </td>
-                            <td class="px-4 sm:px-6 py-4 text-right">
-                                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                                    <span class="material-symbols-outlined">more_vert</span>
-                                </button>
-                            </td>
-                        </tr>
-
+                        @endforelse
                     </tbody>
                 </table>
             </div>

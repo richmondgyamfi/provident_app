@@ -10,6 +10,11 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* Global input styling for dark mode */
+input, textarea, select {
+    @apply bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400;
+}
+
 /* Print styles for loan application */
 @media print {
   body * {
@@ -17,33 +22,33 @@
     background: white !important;
     box-shadow: none !important;
   }
-  
+
   #sidebar, #sidebar-overlay, [id*="header"], .guidance-cards, button:not(.print-btn), .progress-bar-container,
   #guidance-cards {
     display: none !important;
   }
-  
+
   main, .print-section {
     padding: 0 !important;
     margin: 0 !important;
     max-width: none !important;
     page-break-inside: avoid;
   }
-  
+
   .print-section {
     margin-bottom: 20px;
   }
-  
+
   table {
     font-size: 10pt;
     width: 100%;
     page-break-inside: auto;
   }
-  
+
   .print-header {
     page-break-after: avoid;
   }
-  
+
   @page {
     size: A4 portrait;
     margin: 0.5in;

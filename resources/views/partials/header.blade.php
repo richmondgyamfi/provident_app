@@ -53,10 +53,10 @@
             <span class="material-symbols-outlined">notifications</span>
         </button>
 
-        <button
+        {{-- <button
             class="bg-accent-gold text-slate-900 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-1 sm:gap-2 hover:bg-accent-gold/90 transition-colors shadow-lg shadow-accent-gold/20">
             <span class="material-symbols-outlined text-base">add</span>
             <span class="hidden sm:inline">New Entry</span>
-        </button>
+        </button> --}}
     </div>
 </header>

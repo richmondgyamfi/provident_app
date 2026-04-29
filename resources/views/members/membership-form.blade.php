@@ -51,7 +51,7 @@
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Staff Number</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" readonly name="staff_no" id="staff_no" placeholder="Staff Number" value="{{ $member->staff_no }}"/>
                         </div>
                         <div class="space-y-1">
@@ -101,19 +101,19 @@
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bank Name</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="bank_name" id="bank_name" placeholder="Bank Name" />
                         </div>
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Account Number</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="account_number" id="account_number" placeholder="Account Number" />
                         </div>
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Account Name</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="account_name" id="account_name" placeholder="Account Name" />
                         </div>
                     </div>
@@ -131,27 +131,27 @@
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Full
                                 Name</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="next_of_kin_name" id="next_of_kin_name" placeholder="Next of Kin Full Name" />
                         </div>
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Relationship</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="next_of_kin_relationship" id="next_of_kin_relationship" placeholder="Relationship to Next of Kin" />
                         </div>
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Contact
                                 Number</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="next_of_kin_phone" id="next_of_kin_phone" placeholder="Next of Kin Contact Number" />
                         </div>
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Email
                                 Address</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="email" name="next_of_kin_email" id="next_of_kin_email" placeholder="Next of Kin Email Address" />
                         </div>
                         <div class="space-y-1 md:col-span-2">
@@ -159,7 +159,7 @@
                                 class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Residential
                                 Address</label>
                             <input
-                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="text" name="next_of_kin_address" id="next_of_kin_address" placeholder="Next of Kin Residential Address" />
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                             style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
                         <h2 class="text-xl font-black tracking-tight uppercase text-on-surface">Contribution</h2>
                     </div>
-                    <div class="flex-1 p-4 bg-white border-2 border-primary ring-2 ring-primary/20 text-left">
+                    <div class="flex-1 p-4 bg-white border-2 border-primary ring-2 ring-primary/20 text-left dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400">
                         {{-- <p class="text-lg font-black mt-1">Monthly Contribution</p>
                         <div class="mt-4 flex items-center gap-2">
                             <span class="font-bold text-xl">GHC</span>
@@ -182,14 +182,14 @@
                         <p class="text-lg font-black mt-1">Monthly Percentage</p>
                         <small>Monthly percentage of ut contributions on your basic salary (at least 10%)</small>
                         <div class="mt-4 flex items-center gap-2">
-                            <input class="w-16 border-none bg-surface-container-low p-2 font-bold text-center"
+                            <input class="w-16 border-none bg-surface-container-low p-2 font-bold text-center dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                 type="number" value="10" min="10" name="monthly_contribution" />
                             <span class="font-bold text-xl">%</span>
                         </div>
                     </div>
                 </section>
                 <!-- Consent & Actions -->
-                <section class="bg-white p-8">
+                <section class="bg-white p-8 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400">
                     <label class="flex items-start gap-4 cursor-pointer">
                         <input class="mt-1 rounded-none border-slate-300 text-primary focus:ring-primary h-5 w-5"
                             type="checkbox" name="signed_agreement" id="signed_agreement"/>

@@ -22,7 +22,7 @@ class LoanRepaymentUploadController extends Controller
     public function index()
     {
         $uploads = LoanRepaymentUpload::withCount('repayments')
-            ->with('user:id,name')
+            ->with('user:id,fname,mname,lname')
             ->latest()
             ->paginate(10);
 
@@ -31,7 +31,7 @@ class LoanRepaymentUploadController extends Controller
 
     public function show(LoanRepaymentUpload $loanRepaymentUpload)
     {
-        $repayments = $loanRepaymentUpload->repayments()->with(['loan.member'])->latest()->get();
+        $repayments = $loanRepaymentUpload->repayments()->with(['loan.user'])->latest()->get();
         $statusClass = match ($loanRepaymentUpload->status) {
             'success' => 'green',
             'failed' => 'red',
