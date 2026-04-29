@@ -79,7 +79,7 @@ class Loan extends Model
 
     public function repayments()
     {
-        return $this->hasMany(LoanRepayment::class);
+        return $this->hasMany(LoanRepayment::class)->orderBy('payment_date');
     }
 
     public function getStatusColorAttribute()

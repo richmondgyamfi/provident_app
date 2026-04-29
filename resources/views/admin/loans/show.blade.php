@@ -8,9 +8,19 @@
         <div class="flex flex-col gap-2">
             <h1 class="text-3xl font-black text-slate-900 dark:text-slate-100">Loan Application #{{ $loan->application_ref }}</h1>
             <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30">Pending</span>
+                @php $statusClass = $loan->getStatusColorAttribute(); @endphp
+                <span class="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-{{ $statusClass }}-100 text-{{ $statusClass }}-700 dark:bg-{{ $statusClass }}-900/50 dark:text-{{ $statusClass }}-300">{{ ucfirst($loan->status) }}</span>
             </div>
         </div>
+        @if ($errors->any())
+            <div class="bg-red-100 text-red-800 p-4 rounded">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif  
         <div class="flex gap-3">
             @if($loan->status === 'pending')
             <form action="{{ route('admin.loans.approve', $loan) }}" method="POST" class="inline">
@@ -77,7 +87,9 @@
             <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">Repayments</h2>
             @if($loan->repayments->count())
             <div class="space-y-3">
+                @php $cumulativePaid = 0; @endphp
                 @foreach($loan->repayments->take(5) as $repayment)
+                @php $cumulativePaid += $repayment->amount; @endphp
                 <div class="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
                     <div class="size-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                         ₵{{ number_format($repayment->amount, 2) }}
@@ -86,7 +98,10 @@
                         <p class="font-bold text-slate-900 dark:text-slate-100">{{ $repayment->payment_date->format('M d, Y') }}</p>
                         <p class="text-sm text-slate-500">{{ $repayment->payment_method }} - {{ $repayment->reference ?? 'N/A' }}</p>
                     </div>
-                    <p class="font-bold text-slate-900 dark:text-slate-100">Total Paid: ₵{{ number_format($loan->repayments->sum('amount'), 2) }}</p>
+                    <div class="text-right">
+                        <p class="font-bold text-slate-900 dark:text-slate-100">Paid: ₵{{ number_format($cumulativePaid, 2) }}</p>
+                        <p class="text-sm text-slate-500">Remaining: ₵{{ number_format($loan->amount - $cumulativePaid, 2) }}</p>
+                    </div>
                 </div>
                 @endforeach
             </div>
