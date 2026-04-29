@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Loan;
 use App\Models\LoanRepayment;
 use App\Models\LoanRepaymentUpload;
-use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -83,19 +83,19 @@ class LoanRepaymentUploadController extends Controller
                     continue;
                 }
 
-                $member = Member::where('staff_no', $staffNo)->first();
-                if (! $member) {
-                    $errors[] = 'Row '.($index + 2).": Member not found for staff_no $staffNo";
+                $user = User::where('staff_no', $staffNo)->first();
+                if (! $user) {
+                    $errors[] = 'Row '.($index + 2).": User Account not found for staff_no $staffNo";
 
                     continue;
                 }
 
                 $loan = Loan::active()
-                    ->where('member_id', $member->id)
+                    ->where('user_id', $user->id)
                     ->where('outstanding_balance', '>', 0)
                     ->first();
                 if (! $loan) {
-                    $errors[] = 'Row '.($index + 2).": No active loan for {$member->name} ($staffNo)";
+                    $errors[] = 'Row '.($index + 2).": No active loan for {$user->fname} {$user->mname} {$user->lname} ($staffNo)";
 
                     continue;
                 }
