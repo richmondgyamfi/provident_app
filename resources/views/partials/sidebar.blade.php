@@ -28,100 +28,116 @@
     <!-- Nav links -->
     <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
 
-                @php
-                    $activeClass = 'flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-semibold';
-                    $inactiveClass = 'flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors';
-@endphp
+        @php
+            $activeClass = 'flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-semibold';
+            $inactiveClass =
+                'flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors';
+        @endphp
 
-                {{-- Member Dashboard --}}
-                @if(auth()->user()->hasRole('staff') || auth()->user()->hasRole('director') || auth()->user()->hasRole('vc') || auth()->user()->hasRole('payroll'))
-                <div class="pt-2 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
-                    Staff
-                </div>
-                
-                <a class="{{ request()->routeIs('dashboard') || request()->routeIs('members.index') ? $activeClass : $inactiveClass }}" href="{{ route('members.index') }}">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="text-sm">Dashboard</span>
-                </a>
-                <a class="{{ request()->routeIs('membership-form') ? $activeClass : $inactiveClass }}" href="{{ route('membership-form') }}">
-                    <span class="material-symbols-outlined">groups</span>
-                    <span class="text-sm">Membership Form</span>
-                </a>
-                <a class="{{ request()->routeIs('loan-application') || request()->routeIs('loans.*') ? $activeClass : $inactiveClass }}" href="{{ route('loan-application') }}">
+        {{-- Member Dashboard --}}
+        @if (auth()->user()->hasRole('staff') ||
+                auth()->user()->hasRole('director') ||
+                auth()->user()->hasRole('vc') ||
+                auth()->user()->hasRole('payroll'))
+            <div class="pt-2 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
+                Staff
+            </div>
 
-                    <span class="material-symbols-outlined">receipt_long</span>
-                    <span class="text-sm">Loans</span>
-                </a>
-                {{-- @if(auth()->user()->age >= 50) --}}
-                <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}" href="withdrawal-request">
-                    <span class="material-symbols-outlined">wallet</span>
-                    <span class="text-sm">Withdrawals</span>
-                </a>
-                {{-- @endif --}}
-                <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
-                    Reports
-                </div>
+            <a class="{{ request()->routeIs('dashboard') || request()->routeIs('members.index') ? $activeClass : $inactiveClass }}"
+                href="{{ route('members.index') }}">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text-sm">Dashboard</span>
+            </a>
+            <a class="{{ request()->routeIs('membership-form') ? $activeClass : $inactiveClass }}"
+                href="{{ route('membership-form') }}">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="text-sm">Membership Form</span>
+            </a>
+            <a class="{{ request()->routeIs('loan-application') || request()->routeIs('loans.*') ? $activeClass : $inactiveClass }}"
+                href="{{ route('loan-application') }}">
 
-                <a class="{{ request()->routeIs('staff-statement') ? $activeClass : $inactiveClass }}" href="staff-statement">
-                    <span class="material-symbols-outlined">analytics</span>
-                    <span class="text-sm">Financial Summary</span>
-                </a>
-                @endif
+                <span class="material-symbols-outlined">receipt_long</span>
+                <span class="text-sm">Loans</span>
+            </a>
+            {{-- @if (auth()->user()->age >= 50) --}}
+            <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}"
+                href="withdrawal-request">
+                <span class="material-symbols-outlined">wallet</span>
+                <span class="text-sm">Withdrawals</span>
+            </a>
+            {{-- @endif --}}
+            <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
+                Reports
+            </div>
 
-                {{-- Admin Dashboard --}}
-                @if(auth()->user()->isAdmin())
-                <div class="pt-2 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
-                    Admin
-                </div>
-                <a class="{{ request()->routeIs('admin.admin-dashboard') ? $activeClass : $inactiveClass }}" href="{{ route('admin.admin-dashboard') }}">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="text-sm">Admin Dashboard</span>
-                </a>
-                <a class="{{ request()->routeIs('admin.membership-form-admin') ? $activeClass : $inactiveClass }}" href="{{ route('admin.membership-form-admin') }}">
-                    <span class="material-symbols-outlined">groups</span>
-                    <span class="text-sm">Membership Form</span>
-                </a>
-                <a class="{{ request()->routeIs('payroll-contribution.*') ? $activeClass : $inactiveClass }}" href="{{ route('payroll-contribution.create') }}">
-                    <span class="material-symbols-outlined">payments</span>
-                    <span class="text-sm">Payroll &amp; Contribution</span>
-                </a>
+            <a class="{{ request()->routeIs('staff-statement') ? $activeClass : $inactiveClass }}"
+                href="staff-statement">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="text-sm">Financial Summary</span>
+            </a>
+        @endif
 
-                <a class="{{ request()->routeIs('admin.loan-repayment-uploads.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.loan-repayment-uploads.index') }}">
-                    <span class="material-symbols-outlined">payments</span>
-                    <span class="text-sm">Loan Repayments</span>
-                </a>
-                <a class="{{ request()->routeIs('admin.loans.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.loans.index') }}">
-                    <span class="material-symbols-outlined">receipt_long</span>
-                    <span class="text-sm">Loans</span>
-                </a>
-                <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.withdrawals.index') }}">
-                    <span class="material-symbols-outlined">wallet</span>
-                    <span class="text-sm">Withdrawals</span>
-                </a>
-                <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
-                    Reports
-                </div>
+        {{-- Admin Dashboard --}}
+        @if (auth()->user()->isAdmin())
+            <div class="pt-2 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
+                Admin
+            </div>
+            <a class="{{ request()->routeIs('admin.admin-dashboard') ? $activeClass : $inactiveClass }}"
+                href="{{ route('admin.admin-dashboard') }}">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="text-sm">Admin Dashboard</span>
+            </a>
+            <a class="{{ request()->routeIs('admin.membership-form-admin') ? $activeClass : $inactiveClass }}"
+                href="{{ route('admin.membership-form-admin') }}">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="text-sm">Membership Form</span>
+            </a>
+            <a class="{{ request()->routeIs('payroll-contribution.*') ? $activeClass : $inactiveClass }}"
+                href="{{ route('payroll-contribution.create') }}">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="text-sm">Payroll &amp; Contribution</span>
+            </a>
 
-                <a class="{{ request()->routeIs('reports.audit*') ? $activeClass : $inactiveClass }}" href="#">
-                    <span class="material-symbols-outlined">description</span>
-                    <span class="text-sm">Audit Log</span>
-                </a>
-                @endif
+            <a class="{{ request()->routeIs('admin.loan-repayment-uploads.*') ? $activeClass : $inactiveClass }}"
+                href="{{ route('admin.loan-repayment-uploads.index') }}">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="text-sm">Loan Repayments</span>
+            </a>
+            <a class="{{ request()->routeIs('admin.loans.*') ? $activeClass : $inactiveClass }}"
+                href="{{ route('admin.loans.index') }}">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <span class="text-sm">Loans</span>
+            </a>
+            <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}"
+                href="{{ route('admin.withdrawals.index') }}">
+                <span class="material-symbols-outlined">wallet</span>
+                <span class="text-sm">Withdrawals</span>
+            </a>
+            <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
+                Reports
+            </div>
 
-                <a class="{{ request()->routeIs('staff-contribution') ? $activeClass : $inactiveClass }}" href="admin/staff-contribution">
-                    <span class="material-symbols-outlined">payments</span>
-                    <span class="text-sm">Staff Payroll &amp; Contribution</span>
-                </a>
-            </nav>
+            <a class="{{ request()->routeIs('reports.audit*') ? $activeClass : $inactiveClass }}" href="#">
+                <span class="material-symbols-outlined">description</span>
+                <span class="text-sm">Audit Log</span>
+            </a>
+        @endif
+
+        <a class="{{ request()->routeIs('staff-contribution') ? $activeClass : $inactiveClass }}"
+            href="admin/staff-contribution">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="text-sm">Staff Payroll &amp; Contribution</span>
+        </a>
+    </nav>
 
     <!-- Bottom: dark mode toggle + user section -->
     <div class="p-4 border-t border-slate-200 dark:border-slate-800">
 
-        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+        {{-- <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             href="#">
             <span class="material-symbols-outlined">settings</span>
             <span class="text-sm font-medium">Settings</span>
-        </a>
+        </a> --}}
 
         <form action="{{ route('logout') }}" method="POST" class="inline">
             @csrf
