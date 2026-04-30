@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Mail\NewMemberWelcomeMail;
 use App\Models\RoleUser;
 use App\Models\Staff;
-use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +55,7 @@ class GoogleController extends Controller
                 ->where('ucc_mail', $googleUser->getEmail())
                 ->first();
             // dd($staff);
-=======
+
             // using relationships instead of joins
             // first get the staff record, it should have relationships to unit and job
             // but you have to link it to the users record

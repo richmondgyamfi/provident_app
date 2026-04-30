@@ -25,11 +25,6 @@ class Staff extends Model
         return $this->hasOne(Promotion::class, 'staff_no', 'staff_no')->latestOfMany();
     }
 
-    public function promotion()
-    {
-        return $this->hasOne(Promotion::class, 'staff_no', 'staff_no')->latestOfMany();
-    }
-
     public function unit()
     {
         return $this->belongsTo(Unit::class, 'unit_id');
@@ -40,35 +35,6 @@ class Staff extends Model
         return $this->belongsTo(Job::class, 'job_id');
     }
 
-<<<<<<< HEAD
-    public function user()
-=======
-    // a staff can have many promotions but a promotion belongs to one staff
-    public function promotion()
->>>>>>> 2705002 (staff and user models edited)
-    {
-        return $this->hasOne(User::class, 'staff_no', 'staff_no');
-    }
-
-    /**
-     * Get the department name, prioritizing the promotion unit
-     * and falling back to the base staff unit.
-     */
-    public function getDepartmentAttribute()
-    {
-        return $this->promotion->unit->long_name ?? $this->unit->long_name ?? null;
-    }
-
-    /**
-     * Get the job title, prioritizing the promotion title
-     * and falling back to the base staff job title.
-     */
-    public function getJobTitleAttribute()
-    {
-        return $this->promotion->job->title ?? $this->job->title ?? null;
-    }
-
-    // every staff is a user and every user is a staff
     public function user()
     {
         return $this->hasOne(User::class, 'staff_no', 'staff_no');

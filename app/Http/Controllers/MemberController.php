@@ -103,12 +103,9 @@ class MemberController extends Controller
 
     public function loanApplication()
     {
-<<<<<<< HEAD
-        // display or pick loan types depending on if staff is a member show member loan types else show non member loan types
-        // display or pick loan types depending on if staff is a member show member loan types else show non member loan types
-=======
+
         //display or pick loan types depending on if staff is a member show member loan types else show non member loan types
->>>>>>> 5ac159f (palapal)
+
         // $loanTypes = [];
         $staffmember = Member::where('staff_no', Auth::user()->staff_no)->first();
         if ($staffmember) {
