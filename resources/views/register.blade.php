@@ -118,24 +118,24 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-semibold">Full Name</label>
-                            <input class="w-full px-4 py-3 rounded-lg border border-primary/20" placeholder="John Doe" type="text" />
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
+                            <input class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" placeholder="John Doe" type="text" />
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label class="text-sm font-semibold">Member ID</label>
-                            <input class="w-full px-4 py-3 rounded-lg border border-primary/20" placeholder="PF-12345678" type="text" />
+                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Member ID</label>
+                            <input class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" placeholder="PF-12345678" type="text" />
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-sm font-semibold">Email Address</label>
-                        <input class="w-full px-4 py-3 rounded-lg border border-primary/20" placeholder="email@organization.com" type="email" />
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+                        <input class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" placeholder="email@organization.com" type="email" />
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-sm font-semibold">Phone Number</label>
-                        <input class="w-full px-4 py-3 rounded-lg border border-primary/20" placeholder="+1 (555) 000-0000" type="tel" />
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone Number</label>
+                        <input class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" placeholder="+1 (555) 000-0000" type="tel" />
                     </div>
 
                     <div class="flex flex-col gap-2">

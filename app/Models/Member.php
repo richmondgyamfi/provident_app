@@ -27,6 +27,21 @@ class Member extends Model
         return $this->hasMany(Contribution::class);
     }
 
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
+
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
+     // users
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'staff_no', 'staff_no');
+    }
+
     // protected $table = 'hr.staff';
 
 

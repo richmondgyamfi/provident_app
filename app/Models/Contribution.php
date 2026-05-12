@@ -39,8 +39,19 @@ protected $fillable = [
         return $query->where('status', '!=', 'deleted');
     }
 
-    public function scopeRecent($query)
+public function scopeRecent($query)
     {
         return $query->notDeleted()->latest()->limit(10);
+    }
+
+    public static function getMonthName($month)
+    {
+        $months = [
+            1 => 'January', 2 => 'February', 3 => 'March',
+            4 => 'April', 5 => 'May', 6 => 'June',
+            7 => 'July', 8 => 'August', 9 => 'September',
+            10 => 'October', 11 => 'November', 12 => 'December',
+        ];
+        return $months[$month] ?? 'Unknown';
     }
 }

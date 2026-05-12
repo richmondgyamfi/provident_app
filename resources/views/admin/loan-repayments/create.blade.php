@@ -32,7 +32,8 @@
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">₵</span>
                         <input type="number" step="0.01" name="amount" required 
                             value="{{ $loan->monthly_payment }}" 
-                            class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" />
+                            class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400" />
+                            {{-- w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 --}}
                     </div>
                     <p class="text-xs text-slate-500 mt-1">Total paid so far: ₵{{ number_format($loan->repayments->sum('amount'), 2) }}</p>
                 </div>
@@ -40,12 +41,12 @@
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-2">Payment Date</label>
                     <input type="date" name="payment_date" required value="{{ date('Y-m-d') }}" 
-                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" />
+                        class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" />
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-2">Payment Method</label>
-                    <select name="payment_method" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <select name="payment_method" required class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400">
                         <option value="salary_deduction">Salary Deduction</option>
                         <option value="bank_transfer">Bank Transfer</option>
                         <option value="cash">Cash Deposit</option>
@@ -54,8 +55,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-slate-700 mb-2">Reference / Receipt #</label>
-                    <input type="text" name="reference" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="e.g. REF-2024-001" />
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Reference / Receipt #</label>
+                    <input type="text" name="reference" class="w-full px-4 py-3 rounded-lg border border-primary/20 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400" placeholder="e.g. REF-2024-001" />
                 </div>
             </div>
 

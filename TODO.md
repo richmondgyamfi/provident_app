@@ -1,19 +1,13 @@
-# File Upload Form Implementation TODO
+# TODO
 
-## [x] 1. Plan approved by user
+- [ ] Create admin Reports module (UI + controller)
+- [x] Add routes for /admin/reports, /admin/reports/export/excel, /admin/reports/export/pdf, /admin/reports/data
 
-## [x] 2. Create TODO.md (current)
+- [ ] Create reports index blade with filters (date range), report type selection, graph section, and export buttons
+- [ ] Implement ReportsController: query + graph dataset + Excel/PDF export endpoints
+- [ ] Implement Excel export classes for Loans, Contributions, Withdrawals
+- [ ] Implement PDF blade templates for Loans, Contributions, Withdrawals and wire controller export
+- [ ] Add sidebar link to Reports
+- [ ] Install missing dependencies (laravel-excel and PDF dompdf wrappers) if required
+- [ ] Manual testing: browser navigation + exporting to Excel/PDF + graph rendering
 
-## [x] 3. Update app/Models/PayrollUpload.php (add fillable, relationships)
-
-## [x] 4. Update routes/web.php (add resource routes, pass data to controller)
-
-## [x] 5. Update app/Http/Controllers/ContributionController.php (pass payrollUploads to view)
-
-## [x] 6. Implement app/Http/Controllers/PayrollUploadController.php (store with CSV parsing)
-
-## [x] 7. Update resources/views/admin/payroll-contribution.blade.php (add form/JS, dynamic tables)
-
-## [ ] 8. Test: Run server, upload sample CSV, verify DB inserts
-
-## [ ] 9. attempt_completion

@@ -46,7 +46,7 @@
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">First
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. Alexander" name="fname" type="text" value="{{ old('fname') }}" />
                             </div>
                             <div class="space-y-1">
@@ -54,21 +54,21 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Middle
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. Gyamfi" name="mname" type="text" value="{{ old('mname') }}" />
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Last
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. Nketia" name="lname" type="text" value="{{ old('lname') }}" />
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Staff
                                     Number / Provident ID</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" readonly name="staff_no" id="staff_no" placeholder="Staff Number"
                                     value="{{ $generatestaffno }}" />
                             </div>
@@ -77,21 +77,21 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Contact
                                     Number</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="0256188992" maxlength="10" name="phone_no" type="tel" value="{{ old('phone_no') }}"/>
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Staff
                                     Email</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="vance.a@prudential.com" name="email" type="email" value="{{ old('email') }}"/>
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Date
                                     of Birth</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. 2023-01-01" type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" />
                             </div>
                         </div>
@@ -109,21 +109,21 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Members
                                     Company and Department</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. Sasakawa" name="company" type="text" value="{{ old('company') }}" />
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Job
                                     Title</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="Senior Analyst" type="text" name="job_title" value="{{ old('job_title') }}" />
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Date
                                     of Employment</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     placeholder="e.g. 2023-01-01" type="date" name="date_of_employment" value="{{ old('date_of_employment') }}" />
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bank
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="bank_name" id="bank_name" placeholder="Bank Name" value="{{ old('bank_name') }}" />
                             </div>
                             <div class="space-y-1">
@@ -146,7 +146,7 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Account
                                     Number</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="account_number" id="account_number"
                                     placeholder="Account Number" value="{{ old('account_number') }}" />
                             </div>
@@ -155,7 +155,7 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Account
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="account_name" id="account_name" placeholder="Account Name" value="{{ old('account_name') }}" />
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Full
                                     Name</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="next_of_kin_name" id="next_of_kin_name"
                                     placeholder="Next of Kin Full Name" value="{{ old('next_of_kin_name') }}" />
                             </div>
@@ -181,7 +181,7 @@
                                 <label
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Relationship</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="next_of_kin_relationship" id="next_of_kin_relationship"
                                     placeholder="Relationship to Next of Kin" value="{{ old('next_of_kin_relationship') }}" />
                             </div>
@@ -190,7 +190,7 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Contact
                                     Number</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="next_of_kin_phone" id="next_of_kin_phone"
                                     placeholder="Next of Kin Contact Number" value="{{ old('next_of_kin_phone') }}" />
                             </div>
@@ -199,7 +199,7 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Email
                                     Address</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="email" name="next_of_kin_email" id="next_of_kin_email"
                                     placeholder="Next of Kin Email Address" value="{{ old('next_of_kin_email') }}" />
                             </div>
@@ -208,7 +208,7 @@
                                     class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Residential
                                     Address</label>
                                 <input
-                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3"
+                                    class="w-full border-none bg-surface-container-low focus:ring-2 focus:ring-primary text-on-surface font-semibold p-3 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                     type="text" name="next_of_kin_address" id="next_of_kin_address"
                                     placeholder="Next of Kin Residential Address" value="{{ old('next_of_kin_address') }}" />
                             </div>
@@ -234,12 +234,12 @@
                             </div>
                             <div class="flex flex-col md:flex-row gap-4">
                                 <div
-                                    class="flex-1 p-4 bg-white border-2 border-primary ring-2 ring-primary/20 text-left">
+                                    class="flex-1 p-4 bg-white border-2 border-primary ring-2 ring-primary/20 text-left dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400">
                                     <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Option
                                         A</span>
                                     <p class="text-lg font-black mt-1">Monthly Percentage</p>
                                     <div class="mt-4 flex items-center gap-2">
-                                        <input class="w-16 border-none bg-surface-container-low p-2 font-bold text-center"
+                                        <input class="w-16 border-none bg-surface-container-low p-2 font-bold text-center dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
                                             type="number" value="{{ old('monthly_contribution') }}" min="10" name="monthly_contribution"/>
                                         <span class="font-bold text-xl">%</span>
                                     </div>
@@ -248,7 +248,7 @@
                         </div>
                     </section>
                     <!-- Consent & Actions -->
-                    <section class="bg-white p-8">
+                    <section class="bg-white p-8 dark:border-primary/30 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 dark:placeholder-slate-400">
                         <label class="flex items-start gap-4 cursor-pointer">
                             <input class="mt-1 rounded-none border-slate-300 text-primary focus:ring-primary h-5 w-5"
                                 type="checkbox" name="signed_agreement" id="signed_agreement" {{ old('signed_agreement') ? 'checked' : '' }}/>

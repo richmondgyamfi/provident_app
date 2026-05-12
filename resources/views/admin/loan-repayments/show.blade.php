@@ -50,8 +50,8 @@
                             @forelse ($repayments as $repayment)
                             <tr>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium text-slate-900 dark:text-slate-100">{{ $repayment->loan->member->name }}</div>
-                                    <div class="text-xs text-slate-500">{{ $repayment->loan->member->staff_no }}</div>
+                                    <div class="font-medium text-slate-900 dark:text-slate-100">{{ $repayment->loan->user->fname }} {{ $repayment->loan->user->mname }} {{ $repayment->loan->user->lname }}</div>
+                                    <div class="text-xs text-slate-500">{{ $repayment->loan->user->staff_no }}</div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="font-mono text-sm font-bold">#{{ $repayment->loan->application_ref }}</div>

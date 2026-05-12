@@ -20,8 +20,14 @@
                 </div>
                 <div class="flex justify-between">
                     <span class="text-slate-500">Amount</span>
-                    <span class="font-bold text-2xl">$ {{ number_format($withdrawal->amount, 2) }}</span>
+                    <span class="font-bold text-2xl">$ {{ number_format($withdrawal->approved_amount ?? $withdrawal->amount, 2) }}</span>
                 </div>
+                @if($withdrawal->approved_amount && $withdrawal->approved_amount != $withdrawal->amount)
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Requested Amount</span>
+                    <span class="text-slate-400">$ {{ number_format($withdrawal->amount, 2) }}</span>
+                </div>
+                @endif
                 <div class="flex justify-between">
                     <span class="text-slate-500">Reason</span>
                     <span>{{ ucfirst(str_replace('_', ' ', $withdrawal->reason)) }}</span>

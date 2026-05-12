@@ -101,7 +101,18 @@
         ::-webkit-scrollbar-thumb:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
-    }
+        /* Global input styling for dark mode */
+        input, textarea, select {
+            background-color: white;
+        }
+        .dark input, .dark textarea, .dark select {
+            background-color: rgb(30 41 59); /* slate-800 */
+            border-color: rgb(71 85 105); /* slate-600 */
+            color: rgb(241 245 249); /* slate-100 */
+        }
+        .dark input::placeholder, .dark textarea::placeholder, .dark select::placeholder {
+            color: rgb(148 163 184); /* slate-400 */
+        }    }
     </style>
 
 </head>

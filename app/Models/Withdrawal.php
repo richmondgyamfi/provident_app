@@ -24,6 +24,7 @@ class Withdrawal extends Model
 
     protected $casts = [
         'amount' => 'decimal:2',
+        'approved_amount' => 'decimal:2',
         'request_date' => 'date',
         'processed_at' => 'datetime',
     ];
@@ -48,7 +49,7 @@ class Withdrawal extends Model
 
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'approved' => 'green',
             'pending' => 'yellow',
             'rejected' => 'red',

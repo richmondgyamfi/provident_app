@@ -96,7 +96,7 @@
                                             </option>
                                         @endif --}}
                                             @foreach ($members as $member)
-                                                <option value="{{ $member->id }}">{{ $member->name }}
+                                                <option value="{{ $member->id }}">{{ $member->fname }} {{ $member->mname }} {{ $member->lname }}
                                                     ({{ $member->staff_no }})
                                                 </option>
                                             @endforeach
@@ -378,7 +378,8 @@
                                             </div>
                                             <div>
                                                 <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
-                                                    {{ $contrib->name }}</p>
+                                                    {{ $contrib->fname }} {{ $contrib->mname }} {{ $contrib->lname }}
+                                                </p>
                                                 <p class="text-xs text-slate-400">{{ $contrib->staff_no }}</p>
                                             </div>
                                         </div>
