@@ -7,7 +7,7 @@
     <div class="p-4 sm:p-8 space-y-6 sm:space-y-8">
 
         <!-- ── KPI Cards ──────────────────────────────────────────── -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-3 sm:gap-4">
 
             <div
                 class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
@@ -237,6 +237,12 @@
                                 <span class="text-sm text-slate-600 dark:text-slate-400">Recent (30 days)</span>
                                 <span class="font-bold text-emerald-600">{{ $stats['recent_contributions_count'] }}</span>
                             </div>
+                            @if($stats['latest_contribution_year'] && $stats['latest_contribution_month'])
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-slate-600 dark:text-slate-400">Latest Upload</span>
+                                <span class="font-bold text-blue-600">{{ date('F', mktime(0, 0, 0, $stats['latest_contribution_month'], 1)) }} {{ $stats['latest_contribution_year'] }}</span>
+                            </div>
+                            @endif
                         </div>
                     </div>
 

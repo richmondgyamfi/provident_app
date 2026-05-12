@@ -53,7 +53,7 @@
                     <span class="text-sm">Loans</span>
                 </a>
                 {{-- @if(auth()->user()->age >= 50) --}}
-                <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}" href="withdrawal-request">
+                <a class="{{ request()->routeIs('admin.withdrawals.*') ? $activeClass : $inactiveClass }}" href="{{ route('withdrawal-request') }}">
                     <span class="material-symbols-outlined">wallet</span>
                     <span class="text-sm">Withdrawals</span>
                 </a>
@@ -61,14 +61,17 @@
                 <div class="pt-4 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
                     Reports
                 </div>
-
+                <a class="{{ request()->routeIs('admin.reports.*') || request()->routeIs('admin.reports.index') || request()->routeIs('reports.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.reports.index') }}">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="text-sm">Report</span>
+                </a>
                 <a class="{{ request()->routeIs('staff-statement') ? $activeClass : $inactiveClass }}" href="staff-statement">
                     <span class="material-symbols-outlined">analytics</span>
                     <span class="text-sm">Financial Summary</span>
                 </a>
                 @endif
 
-                {{-- Admin Dashboard --}}
+{{-- Admin Dashboard --}}
                 @if(auth()->user()->isAdmin())
                 <div class="pt-2 pb-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3">
                     Admin
@@ -76,6 +79,10 @@
                 <a class="{{ request()->routeIs('admin.admin-dashboard') ? $activeClass : $inactiveClass }}" href="{{ route('admin.admin-dashboard') }}">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span class="text-sm">Admin Dashboard</span>
+                </a>
+                <a class="{{ request()->routeIs('admin.members.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.members.index') }}">
+                    <span class="material-symbols-outlined">groups</span>
+                    <span class="text-sm">Members</span>
                 </a>
                 <a class="{{ request()->routeIs('admin.membership-form-admin') ? $activeClass : $inactiveClass }}" href="{{ route('admin.membership-form-admin') }}">
                     <span class="material-symbols-outlined">groups</span>
@@ -105,6 +112,11 @@
                 <a class="{{ request()->routeIs('reports.audit*') ? $activeClass : $inactiveClass }}" href="#">
                     <span class="material-symbols-outlined">description</span>
                     <span class="text-sm">Audit Log</span>
+                </a>
+
+                <a class="{{ request()->routeIs('admin.reports.*') || request()->routeIs('reports.*') ? $activeClass : $inactiveClass }}" href="{{ route('admin.reports.index') }}">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="text-sm">Report</span>
                 </a>
                 @endif
 

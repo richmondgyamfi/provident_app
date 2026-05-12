@@ -8,7 +8,13 @@
         <div class="flex flex-wrap justify-between items-end gap-3 mb-8">
             <div class="flex flex-col gap-1">
                 <p class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">Member
-                    Dashboard</p>
+                    Dashboard 
+                @if($stats['latest_contribution_year'] && $stats['latest_contribution_month'])
+                <div class="flex items-center gap-1 mt-1">
+                    <span class="material-symbols-outlined text-xs">calendar_today</span>
+                    <h4>Last Contributions Upload: {{ date('F', mktime(0, 0, 0, $stats['latest_contribution_month'], 1)) }} {{ $stats['latest_contribution_year'] }}</h4>
+                </div>
+                @endif</p>
                 <p class="text-slate-500 dark:text-slate-400 text-base font-normal">Welcome back, John. Here's a snapshot of
                     your provident fund performance.</p>
             </div>
@@ -34,6 +40,12 @@
                     <span class="material-symbols-outlined text-sm">trending_up</span>
                     <span>{{ $stats['total_contributions'] }} payments</span>
                 </div>
+                @if($stats['latest_contribution_year'] && $stats['latest_contribution_month'])
+                <div class="flex items-center gap-1 text-s late-500 text-xs mt-1">
+                    <span class="material-symbols-outlined text-xs">calendar_today</span>
+                    <span>Last: {{ date('F', mktime(0, 0, 0, $stats['latest_contribution_month'], 1)) }} {{ $stats['latest_contribution_year'] }}</span>
+                </div>
+                @endif
             </div>
             <div
                 class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-emerald-500">

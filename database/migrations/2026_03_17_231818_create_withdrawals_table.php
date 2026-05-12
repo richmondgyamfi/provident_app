@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->constrained()->cascadeOnDelete();
-            $table->decimal('amount',14,2);
+            $table->decimal('amount', 14, 2);
+            $table->decimal('approved_amount', 14, 2);
             $table->date('request_date');
-            $table->enum('status',['pending','approved','rejected','paid'])->default('pending');
+            $table->enum('status', ['pending', 'approved', 'rejected', 'paid'])->default('pending');
+            $table->string('reason');
+            $table->text('notes')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->timestamp('processed_at')->nullable();
             $table->timestamps();
         });
     }

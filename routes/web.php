@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\Admin\LoanRepaymentUploadController;
+use App\Http\Controllers\Admin\MemberController as AdminMemberController;
 use App\Http\Controllers\Admin\WithdrawalController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -59,8 +60,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin/payroll/template', [PayrollUploadController::class, 'downloadTemplate'])->name('payroll.template.download');
 
-    Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
+
+        // Reports
+        Route::get('/reports', [\App\Http\Controllers\Admin\ReportsController::class, 'index'])->name('reports.index');
+        Route::get('/reports/data', [\App\Http\Controllers\Admin\ReportsController::class, 'data'])->name('reports.data');
+        Route::get('/reports/export/excel', [\App\Http\Controllers\Admin\ReportsController::class, 'exportExcel'])->name('reports.export.excel');
+        Route::get('/reports/export/pdf', [\App\Http\Controllers\Admin\ReportsController::class, 'exportPdf'])->name('reports.export.pdf');
+
+        // Member management routes
+        Route::get('/members', [AdminMemberController::class, 'index'])->name('members.index');
+        Route::get('/members/{member}', [AdminMemberController::class, 'show'])->name('members.show');
+        
         Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
         Route::get('/loans/{loan}', [LoanController::class, 'show'])->name('loans.show');
         Route::patch('/loans/{loan}/status', [LoanController::class, 'approve'])->name('loans.approve');

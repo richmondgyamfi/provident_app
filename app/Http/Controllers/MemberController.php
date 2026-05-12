@@ -55,6 +55,14 @@ class MemberController extends Controller
             })->count(),
         ];
 
+        // Get latest contribution year and month
+        $latestContribution = Contribution::whereHas('member', function ($q) use ($user) {
+            $q->where('staff_no', $user->staff_no);
+        })->latest('payroll_year')->latest('payroll_month')->first();
+
+        $stats['latest_contribution_year'] = $latestContribution ? $latestContribution->payroll_year : null;
+        $stats['latest_contribution_month'] = $latestContribution ? $latestContribution->payroll_month : null;
+
         // Get recent contributions for this user
         $recentContributions = Contribution::whereHas('member', function ($q) use ($user) {
             $q->where('staff_no', $user->staff_no);
@@ -126,9 +134,18 @@ class MemberController extends Controller
      */
     public function withdrawalRequest()
     {
-        $member = Auth::user()->member; // Assume relationship
+        $member = Auth::user()->member ?? Member::where('staff_no', Auth::user()->staff_no)->first();
 
-        return view('members.withdrawal-request', compact('member'));
+        if (! $member) {
+            return redirect()->route('dashboard')->with('error', 'Member record not found. Please contact administrator.');
+        }
+
+        // Calculate available balance
+        $totalContributions = Contribution::where('member_id', $member->id)->sum('contribution_amount');
+        $totalWithdrawals = Withdrawal::where('member_id', $member->id)->where('status', 'paid')->sum('approved_amount');
+        $availableBalance = $totalContributions - $totalWithdrawals;
+
+        return view('members.withdrawal-request', compact('member', 'availableBalance'));
     }
 
     /**
@@ -142,7 +159,27 @@ class MemberController extends Controller
             'notes' => 'nullable|string|max:1000',
         ]);
 
-        Withdrawal::create($request->only('amount', 'reason', 'notes'));
+        $member = Auth::user()->member ?? Member::where('staff_no', Auth::user()->staff_no)->first();
+
+        if (! $member) {
+            return redirect()->route('withdrawal-request')->with('error', 'Member record not found. Please contact administrator.');
+        }
+
+        // Check if member has sufficient balance
+        $totalContributions = Contribution::where('member_id', $member->id)->sum('contribution_amount');
+        $totalWithdrawals = Withdrawal::where('member_id', $member->id)->where('status', 'paid')->sum('approved_amount');
+        $availableBalance = $totalContributions - $totalWithdrawals;
+
+        if ($request->amount > $availableBalance) {
+            return redirect()->route('withdrawal-request')->with('error', 'Insufficient balance. Available: ₵'.number_format($availableBalance, 2));
+        }
+
+        Withdrawal::create([
+            'member_id' => $member->id,
+            'amount' => $request->amount,
+            'reason' => $request->reason,
+            'notes' => $request->notes,
+        ]);
 
         return redirect()->route('withdrawal-request')->with('success', 'Withdrawal request submitted successfully.');
     }

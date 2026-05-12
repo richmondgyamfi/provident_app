@@ -100,10 +100,10 @@
                 <div class="relative z-10">
                     <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-blue-300 mb-2">
                         Available for Withdrawal</h3>
-                    <div class="text-5xl font-black tracking-tighter mb-4">₵ 0</div>
+                    <div class="text-5xl font-black tracking-tighter mb-4">₵ {{ number_format($availableBalance ?? 0, 2) }}</div>
                     <div class="flex items-center gap-2 text-blue-200 text-sm">
                         <span class="material-symbols-outlined text-sm">lock</span>
-                        <span>Total Account Balance: ₵ 0</span>
+                        <span>Total Account Balance: ₵ {{ number_format($availableBalance ?? 0, 2) }}</span>
                     </div>
                 </div>
             </div>

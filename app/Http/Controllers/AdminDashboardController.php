@@ -183,6 +183,11 @@ class AdminDashboardController extends Controller
             ]);
         }
 
+        // Get latest contribution upload year and month
+        $latestContribution = Contribution::latest('payroll_year')->latest('payroll_month')->first();
+        $stats['latest_contribution_year'] = $latestContribution ? $latestContribution->payroll_year : null;
+        $stats['latest_contribution_month'] = $latestContribution ? $latestContribution->payroll_month : null;
+
         return view('admin.admin-dashboard', compact('stats', 'recentActivities', 'recentTransactions', 'contributionTrends'));
     }
 }

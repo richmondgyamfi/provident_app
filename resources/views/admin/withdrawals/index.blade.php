@@ -30,7 +30,7 @@
                         <td class="px-6 py-4">
                             {{ $withdrawal->member->name }} ({{ $withdrawal->member->staff_no }})
                         </td>
-                        <td class="px-6 py-4 font-bold">$ {{ number_format($withdrawal->amount, 2) }}</td>
+                        <td class="px-6 py-4 font-bold">$ {{ number_format($withdrawal->approved_amount ?? $withdrawal->amount, 2) }}</td>
                         <td class="px-6 py-4">
                             <span class="px-2 py-1 bg-slate-100 text-slate-800 rounded-full text-xs font-bold">
                                 {{ ucfirst(str_replace('_', ' ', $withdrawal->reason)) }}
