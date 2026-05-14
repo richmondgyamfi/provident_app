@@ -82,6 +82,11 @@
             transform: translateX(18px);
         }
 
+        /* Dropdown chevron rotation */
+        .dropdown-chevron {
+            transition: transform 0.2s ease;
+        }
+
         /* Print optimizations */
         @media print {
           html { background: white; }
@@ -159,46 +164,70 @@
 
     </div>
 
-    <!-- ── Shared sidebar toggle script ───────────────────────────────── -->
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
+        <!-- ── Shared sidebar toggle script ───────────────────────────────── -->
+        <script>
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
 
-        function openSidebar() {
-            sidebar.classList.remove('-translate-x-full');
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
-            overlay.classList.add('opacity-100');
-        }
+            function openSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+            }
 
-        function closeSidebar() {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-            overlay.classList.remove('opacity-100');
-        }
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100');
+            }
 
-        // Auto-close sidebar when resizing to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1024) closeSidebar();
-        });
+            // Auto-close sidebar when resizing to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) closeSidebar();
+            });
 
-         // ── Dark mode ────────────────────────────────────────────────────────
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateSidebarToggleLabel(isDark);
-        }
+             // ── Dark mode ────────────────────────────────────────────────────────
+            function toggleTheme() {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateSidebarToggleLabel(isDark);
+            }
 
-        // Keep sidebar toggle icon/label in sync with current mode
-        function updateSidebarToggleLabel(isDark) {
-            const icon  = document.getElementById('sidebar-theme-icon');
-            const label = document.getElementById('sidebar-theme-label');
-            if (!icon || !label) return;
-            icon.textContent  = isDark ? 'light_mode' : 'dark_mode';
-            label.textContent = isDark ? 'Light Mode'  : 'Dark Mode';
-        }
+            // Keep sidebar toggle icon/label in sync with current mode
+            function updateSidebarToggleLabel(isDark) {
+                const icon  = document.getElementById('sidebar-theme-icon');
+                const label = document.getElementById('sidebar-theme-label');
+                if (!icon || !label) return;
+                icon.textContent  = isDark ? 'light_mode' : 'dark_mode';
+                label.textContent = isDark ? 'Light Mode'  : 'Dark Mode';
+            }
 
-        // Sync on initial load
-        updateSidebarToggleLabel(document.documentElement.classList.contains('dark'));
-    </script>
+            // Sync on initial load
+            updateSidebarToggleLabel(document.documentElement.classList.contains('dark'));
+
+            // ── Sidebar Dropdowns ────────────────────────────────────────────────
+            function toggleDropdown(id, button) {
+                const content = document.getElementById(id);
+                const chevron = button.querySelector('.dropdown-chevron');
+
+                if (!content) return;
+
+                const isOpen = !content.classList.contains('max-h-0');
+
+                if (isOpen) {
+                    // Close dropdown
+                    content.classList.add('max-h-0');
+                    content.classList.remove('max-h-[500px]');
+                    chevron.style.transform = 'rotate(0deg)';
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    // Open dropdown
+                    content.classList.remove('max-h-0');
+                    content.classList.add('max-h-[500px]');
+                    chevron.style.transform = 'rotate(180deg)';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            }
+        </script>
 </body>
 </html>
