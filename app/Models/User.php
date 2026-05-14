@@ -20,11 +20,6 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $connection = 'mysql';
-
-    // Explicitly define the table name
-    protected $table = 'users';
-
     protected $fillable = [
         'fname',
         'mname',
@@ -92,21 +87,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    // specify all relationships with the hr database here
-
-    // user has a one to one relationship with staff
-    public function staff()
-    {
-        return $this->hasOne(Staff::class, 'staff_no', 'staff_no');
-    }
-
-    // every user has a job but every job does not have a user
-    public function job()
-    {
-        return $this->hasOne(Job::class, 'title', 'job_title');
-    }
-
-    // every user has a unit but every unit does not have a user
-
 }
