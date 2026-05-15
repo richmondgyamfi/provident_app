@@ -25,11 +25,12 @@
                     @endforeach
                 </ul>
             </div>
-        @endif  
+        @endif
 
         <!-- ── Page Heading ──────────────────────────────── -->
         <div class="flex flex-col gap-2">
-            <h1 class="text-slate-900 dark:text-slate-100 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">
+            <h1
+                class="text-slate-900 dark:text-slate-100 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">
                 New Loan Application
             </h1>
             <p class="text-slate-500 dark:text-slate-400 text-base font-normal">
@@ -71,8 +72,8 @@
         </div>
 
         <!-- ══════════════════════════════════════════════════
-                 STEP 1 – Loan Details
-            ══════════════════════════════════════════════════ -->
+                                             STEP 1 – Loan Details
+                                        ══════════════════════════════════════════════════ -->
         <div id="step-panel-1"
             class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
             <div class="p-5 sm:p-8 border-b border-slate-200 dark:border-slate-800">
@@ -102,7 +103,6 @@
                             onchange="recalc()">
                             @foreach ($loanTypes as $loanType)
                                 <option value="{{ $loanType->id }}">{{ $loanType->name }}</option>
-                                
                             @endforeach
                             {{-- @if ($staffmember)
                             <option value="member">Member Loan</option>
@@ -148,13 +148,14 @@
                         <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Interest
                             Rate</p>
                         @if ($staffmember)
-                        <p id="preview-rate" class="text-xl font-black text-accent-red">14% p.a.</p>
+                            <p id="preview-rate" class="text-xl font-black text-accent-red">14% p.a.</p>
                         @else
-                        <p id="preview-rate" class="text-xl font-black text-accent-red">16% p.a.</p>
+                            <p id="preview-rate" class="text-xl font-black text-accent-red">16% p.a.</p>
                         @endif
                     </div>
                     <div class="text-left sm:text-right border-l border-slate-200 dark:border-slate-800 pl-6 sm:pl-8">
-                        <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Monthly Pay
+                        <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Monthly
+                            Pay
                         </p>
                         <p id="preview-monthly" class="text-xl font-black text-slate-900 dark:text-slate-100">₵0.00</p>
                     </div>
@@ -175,8 +176,8 @@
         </div>
 
         <!-- ══════════════════════════════════════════════════
-                 STEP 2 – Calculation
-            ══════════════════════════════════════════════════ -->
+                                             STEP 2 – Calculation
+                                        ══════════════════════════════════════════════════ -->
         <div id="step-panel-2" class="hidden space-y-6">
 
             <div
@@ -198,9 +199,9 @@
                     <div class="flex flex-col gap-1 p-4 bg-primary/5 rounded-xl border border-primary/10">
                         <p class="text-[10px] font-bold uppercase tracking-wider text-primary">Interest Rate</p>
                         @if ($staffmember)
-                        <p id="calc-rate" class="text-xl font-black text-primary">14% p.a.</p>
+                            <p id="calc-rate" class="text-xl font-black text-primary">14% p.a.</p>
                         @else
-                        <p id="calc-rate" class="text-xl font-black text-primary">16% p.a.</p>
+                            <p id="calc-rate" class="text-xl font-black text-primary">16% p.a.</p>
                         @endif
                     </div>
                     <div class="flex flex-col gap-1 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
@@ -280,8 +281,8 @@
         </div>
 
         <!-- ══════════════════════════════════════════════════
-                 STEP 3 – Documents
-            ══════════════════════════════════════════════════ -->
+                                             STEP 3 – Documents
+                                        ══════════════════════════════════════════════════ -->
         <div id="step-panel-3" class="hidden space-y-6">
 
             <div
@@ -410,8 +411,8 @@
         </div>
 
         <!-- ══════════════════════════════════════════════════
-                 STEP 4 – Terms & Submission
-            ══════════════════════════════════════════════════ -->
+                                             STEP 4 – Terms & Submission
+                                        ══════════════════════════════════════════════════ -->
         <div id="step-panel-4" class="hidden space-y-6">
 
             <div
@@ -439,9 +440,9 @@
                         <div class="flex flex-col gap-0.5">
                             <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Interest Rate</p>
                             @if ($staffmember)
-                            <p id="calc-rate" class="text-xl font-black text-primary">14% p.a.</p>
+                                <p id="calc-rate" class="text-xl font-black text-primary">14% p.a.</p>
                             @else
-                            <p id="calc-rate" class="text-xl font-black text-primary">16% p.a.</p>
+                                <p id="calc-rate" class="text-xl font-black text-primary">16% p.a.</p>
                             @endif
                         </div>
                         <div class="flex flex-col gap-0.5">
@@ -475,11 +476,12 @@
 
                         <p><span class="font-semibold text-slate-800 dark:text-slate-200">1. Interest Rates.</span>
                             Personal and Emergency Loans attract an interest rate of <strong>
-                            @if ($staffmember)
-                            14%
-                            @else
-                            16%
-                            @endif per annum</strong>,
+                                @if ($staffmember)
+                                    14%
+                                @else
+                                    16%
+                                @endif per annum
+                            </strong>,
                             calculated on a reducing balance basis. Facility Loans attract an interest rate of <strong>16%
                                 per annum</strong> on a reducing balance basis. Rates are set by the Fund and may be
                             reviewed periodically with appropriate member notification.</p>
@@ -619,8 +621,8 @@
         </div>
 
         <!-- ══════════════════════════════════════════════════
-                 SUCCESS STATE
-            ══════════════════════════════════════════════════ -->
+                                             SUCCESS STATE
+                                        ══════════════════════════════════════════════════ -->
         <div id="step-panel-success" class="hidden">
             <div
                 class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
